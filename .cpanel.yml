@@ -2,5 +2,5 @@
 deployment:
   tasks:
     # Set the path to your public_html folder
-    - export DEPLOYPATH=/home/dotdesign/public_html/
+    - export DEPLOYPATH=/home/dotdesign/kmw.irix.design/
     - /bin/cp -R dist/* $DEPLOYPATH
