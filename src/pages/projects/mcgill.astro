@@ -1,0 +1,146 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import mcgillRender from "../../assets/mcgill-render.png";
+import mcgillLogo from "../../assets/mcgill.svg";
+---
+
+<Layout title="McGill - Project Overview">
+    <main class="pt-20">
+        <!-- Project Hero -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex items-center gap-4 mb-8">
+                    <Image
+                        src={mcgillLogo}
+                        alt="McGill Logo"
+                        class="h-12 w-auto"
+                    />
+                </div>
+
+                <nav
+                    class="flex gap-8 border-b border-gray-100 pb-4 mb-12 uppercase text-xs font-bold tracking-widest text-secondary/40"
+                >
+                    <a
+                        href="#overview"
+                        class="text-primary border-b-2 border-primary pb-4 -mb-[18px]"
+                        >Overview</a
+                    >
+                    <a
+                        href="#location"
+                        class="hover:text-secondary transition-colors"
+                        >Location</a
+                    >
+                    <a
+                        href="#neighborhood"
+                        class="hover:text-secondary transition-colors"
+                        >Neighborhood</a
+                    >
+                    <a
+                        href="#floorplans"
+                        class="hover:text-secondary transition-colors"
+                        >Floor Plans</a
+                    >
+                </nav>
+
+                <div class="grid lg:grid-cols-2 gap-16 items-start">
+                    <div class="space-y-8">
+                        <h1
+                            class="text-5xl font-black text-secondary leading-none uppercase"
+                        >
+                            McGill <span class="text-primary italic"
+                                >— 4680 McGill St</span>
+                        </h1>
+                        <p class="text-2xl font-bold text-secondary/80 italic">
+                            3 Bedroom, 3 Bath + Flex
+                        </p>
+
+                        <div class="prose prose-lg text-secondary/70">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut
+                                enim ad minim veniam, quis nostrud exercitation
+                                ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in
+                                reprehenderit in voluptate velit esse cillum
+                                dolore eu fugiat nulla pariatur.
+                            </p>
+                        </div>
+
+                        <div class="pt-8">
+                            <a
+                                href="/register"
+                                class="bg-primary text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform inline-block shadow-lg"
+                                >Register Now</a
+                            >
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <Image
+                            src={mcgillRender}
+                            alt="McGill Render"
+                            class="rounded-2xl shadow-2xl w-full"
+                        />
+                        <div
+                            class="absolute -bottom-8 -left-8 bg-bg-cream p-8 rounded-2xl shadow-xl max-w-xs border border-primary/10"
+                        >
+                            <p class="text-primary font-black text-4xl mb-2">
+                                3.5%
+                            </p>
+                            <p
+                                class="text-secondary/60 text-sm font-bold uppercase tracking-widest"
+                            >
+                                Expected Yield
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Features -->
+        <section class="py-24 bg-bg-cream">
+            <div class="container mx-auto px-4">
+                <div class="grid md:grid-cols-3 gap-12">
+                    <div class="bg-white p-10 rounded-3xl shadow-sm space-y-4">
+                        <h3
+                            class="text-xl font-bold text-secondary uppercase italic"
+                        >
+                            Smart Efficiency
+                        </h3>
+                        <p class="text-secondary/60">
+                            Built with the latest energy-efficient technologies
+                            to reduce costs and environmental footprint.
+                        </p>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm space-y-4">
+                        <h3
+                            class="text-xl font-bold text-secondary uppercase italic"
+                        >
+                            Modern Design
+                        </h3>
+                        <p class="text-secondary/60">
+                            Clean lines, open-concept living, and premium
+                            finishes standard in every home.
+                        </p>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm space-y-4">
+                        <h3
+                            class="text-xl font-bold text-secondary uppercase italic"
+                        >
+                            Prime Location
+                        </h3>
+                        <p class="text-secondary/60">
+                            Situated in one of the most sought-after
+                            neighborhoods with easy access to transit and
+                            amenities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

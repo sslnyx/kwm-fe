@@ -1,0 +1,103 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/KWM-Logo.svg";
+import logos from "../assets/logos.svg";
+---
+
+<footer class="bg-secondary text-white py-20">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-12 border-b border-white/10 pb-16">
+            <div class="space-y-6">
+                <a href="/" class="inline-block">
+                    <Image
+                        src={logo}
+                        alt="Kentwood Logo"
+                        class="h-10 w-auto brightness-0 invert"
+                    />
+                </a>
+                <p class="text-white/60 text-sm leading-relaxed">
+                    Building high-quality, sustainable communities that
+                    harmonize with their surroundings.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6">
+                    Explore
+                </h4>
+                <ul class="space-y-4 text-white/60">
+                    <li>
+                        <a
+                            href="/#projects"
+                            class="hover:text-primary transition-colors"
+                            >Projects</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/about"
+                            class="hover:text-primary transition-colors"
+                            >About Story</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/faq"
+                            class="hover:text-primary transition-colors"
+                            >FAQs</a>
+                    </li>
+                    <li>
+                        <a
+                            href="/contact"
+                            class="hover:text-primary transition-colors"
+                            >Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6">
+                    Contact
+                </h4>
+                <ul class="space-y-4 text-white/60 text-sm">
+                    <li>
+                        8580 - 2677 Bridgeport Road,<br />Richmond, BC V6X 1M3
+                        Canada
+                    </li>
+                    <li>
+                        <a
+                            href="mailto:info@kentwoodhomes.ca"
+                            class="hover:text-primary">info@kentwoodhomes.ca</a>
+                    </li>
+                    <li>
+                        <a href="tel:6042888282" class="hover:text-primary"
+                            >604.288.8282</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="space-y-6">
+                <h4 class="font-bold uppercase tracking-widest text-sm mb-6">
+                    Accreditation
+                </h4>
+                <Image
+                    src={logos}
+                    alt="Accreditation Logos"
+                    class="h-12 w-auto opacity-80"
+                />
+            </div>
+        </div>
+
+        <div
+            class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-xs uppercase tracking-widest"
+        >
+            <p>© 2025 Kentwood Homes & Multiplex. All rights reserved.</p>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-white transition-colors"
+                    >Privacy Policy</a
+                >
+                <a href="#" class="hover:text-white transition-colors"
+                    >Terms of Service</a
+                >
+            </div>
+        </div>
+    </div>
+</footer>

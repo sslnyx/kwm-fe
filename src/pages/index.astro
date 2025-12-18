@@ -1,0 +1,187 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+// Hero image import
+import mcgillRender from "../assets/mcgill-render.png";
+import father from "../assets/father.png";
+---
+
+<Layout title="Home">
+	<main class="pt-20">
+		<!-- Hero Section -->
+		<section
+			class="relative min-h-[80vh] flex items-center overflow-hidden bg-bg-cream"
+		>
+			<div
+				class="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-12"
+			>
+				<div class="flex-1 space-y-8">
+					<div class="space-y-4">
+						<h1
+							class="text-4xl md:text-6xl font-bold leading-tight uppercase"
+						>
+							<span class="text-primary italic">Multi</span>plex
+							Homes
+						</h1>
+						<p
+							class="text-2xl md:text-3xl font-semibold tracking-wide text-secondary/80"
+						>
+							Building the Future with Intelligence
+						</p>
+					</div>
+
+					<p
+						class="text-lg max-w-xl text-secondary/70 leading-relaxed"
+					>
+						Focus on 25 years of combined experience. Kentwood Homes
+						& Multiplex has established a solid reputation as a
+						reliable and experienced builder. We are committed to
+						building high-quality, sustainable communities that
+						harmonize with their surroundings.
+					</p>
+
+					<div class="flex wrap gap-4">
+						<a
+							href="/projects/mcgill"
+							class="bg-primary text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:scale-105 transition-transform shadow-lg"
+						>
+							Learn More
+						</a>
+					</div>
+				</div>
+
+				<div class="flex-1 relative">
+					<div
+						class="absolute -top-12 -right-12 w-64 h-64 bg-primary/10 rounded-full blur-3xl -z-1"
+					>
+					</div>
+					<Image
+						src={mcgillRender}
+						alt="McGill Render"
+						class="rounded-2xl shadow-2xl relative z-10 transform md:rotate-2 hover:rotate-0 transition-transform duration-500"
+						width={800}
+					/>
+				</div>
+			</div>
+
+			<!-- Bottom accent line -->
+			<div class="absolute bottom-0 left-0 w-full h-2 bg-primary"></div>
+		</section>
+
+		<!-- Upcoming Projects Section -->
+		<section id="projects" class="py-24 bg-white">
+			<div class="container mx-auto px-4">
+				<div class="text-center mb-16">
+					<h2
+						class="text-primary text-xl font-bold uppercase tracking-[0.2em] mb-4"
+					>
+						Upcoming Projects
+					</h2>
+					<div class="h-1 w-24 bg-primary mx-auto rounded"></div>
+				</div>
+
+				<div class="grid md:grid-cols-2 gap-8">
+					<!-- Skeena Card -->
+					<a
+						href="/projects/skeena"
+						class="group relative bg-[#F9FBF1] p-12 rounded-3xl border border-primary/10 hover:border-primary/50 transition-all duration-300 block"
+					>
+						<h3
+							class="text-5xl font-bold mb-4 text-secondary group-hover:text-primary transition-colors"
+						>
+							Skeena
+						</h3>
+						<p class="text-secondary/60 mb-8 font-medium">
+							Skeena & Grandview, Vancouver<br />Four 3-Bedroom
+							Multiplexes
+						</p>
+						<div
+							class="inline-block px-6 py-2 bg-primary/20 text-primary font-bold rounded-lg uppercase tracking-wider group-hover:bg-primary group-hover:text-white transition-all"
+						>
+							Coming Soon
+						</div>
+					</a>
+
+					<!-- Oakridge Card -->
+					<a
+						href="/projects/oakridge"
+						class="group relative bg-[#F9FBF1] p-12 rounded-3xl border border-primary/10 hover:border-primary/50 transition-all duration-300 block"
+					>
+						<h3
+							class="text-5xl font-bold mb-4 text-secondary group-hover:text-primary transition-colors"
+						>
+							Oakridge
+						</h3>
+						<p class="text-secondary/60 mb-8 font-medium">
+							Oak & W 45th, Vancouver<br />Six 3-Bedroom
+							Multiplexes
+						</p>
+						<div
+							class="inline-block px-6 py-2 bg-primary/20 text-primary font-bold rounded-lg uppercase tracking-wider group-hover:bg-primary group-hover:text-white transition-all"
+						>
+							Coming Soon
+						</div>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Kentwood Difference Section -->
+		<section
+			class="relative py-32 overflow-hidden min-h-[500px] flex items-center"
+		>
+			<!-- Background Image -->
+			<div class="absolute inset-0 z-0">
+				<Image
+					src={father}
+					alt="The Kentwood Difference"
+					class="w-full h-full object-cover"
+				/>
+				<div class="absolute inset-0 bg-black/40"></div>
+			</div>
+
+			<div
+				class="container mx-auto px-4 relative z-10 text-white text-center"
+			>
+				<h2
+					class="text-3xl md:text-5xl font-bold uppercase tracking-widest mb-4"
+				>
+					The Kentwood Difference
+				</h2>
+				<p class="text-xl md:text-2xl font-medium tracking-wide">
+					The Smart Advantage Behind Our Multiplex Home
+				</p>
+			</div>
+		</section>
+
+		<section class="py-24 bg-white">
+			<div class="container mx-auto px-4 text-center">
+				<h2
+					class="text-4xl md:text-6xl font-black text-[#6FC24A] uppercase tracking-tighter mb-12"
+				>
+					Built on Proven <span class="text-secondary italic"
+						>Excellence</span
+					>
+				</h2>
+
+				<div
+					class="max-w-4xl mx-auto space-y-6 text-secondary/70 text-lg leading-relaxed text-left"
+				>
+					<p>
+						Kentwood Home is an award-winning team with high-energy
+						design-driven individuals. We bring our knowledge and
+						early insight into our projects. Focusing on craft,
+						efficiency, and aesthetics, each home is designed with
+						high standards of design and durability. Our houses are
+						made with modern, energy-efficient materials and
+						appliances to reduce environmental impact and lower
+						utility costs. We are dedicated to providing our
+						homeowners with a house they can be proud of, with a
+						focus on quality, value, and customer satisfaction.
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+</Layout>

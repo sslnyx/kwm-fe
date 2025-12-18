@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import contactImg from "../assets/git-1.png";
+---
+
+<Layout title="Contact Us">
+    <main class="pt-20">
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-4 max-w-6xl">
+                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="flex-1 space-y-8">
+                        <h1
+                            class="text-6xl font-black uppercase text-secondary tracking-tighter"
+                        >
+                            Get in <span class="text-primary italic">Touch</span
+                            >
+                        </h1>
+
+                        <form class="space-y-6">
+                            <div>
+                                <label
+                                    for="name"
+                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
+                                    >Name*</label
+                                >
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    required
+                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="email"
+                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
+                                    >Email*</label
+                                >
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    required
+                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="phone"
+                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
+                                    >Phone*</label
+                                >
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    required
+                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="message"
+                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
+                                    >Message</label
+                                >
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    rows="5"
+                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all resize-none"
+                                ></textarea>
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="w-full bg-primary text-white font-bold uppercase py-5 rounded-full hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20"
+                            >
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="flex-1 relative">
+                        <Image
+                            src={contactImg}
+                            alt="Contact Kentwood"
+                            class="rounded-[2.5rem] shadow-2xl w-full sticky top-32"
+                        />
+                        <div class="mt-12 space-y-4 text-center lg:text-left">
+                            <p class="text-secondary font-bold">
+                                Kentwood Homes / Multiplex
+                            </p>
+                            <p class="text-secondary/70">
+                                8580 - 2677 Bridgeport Road<br />Richmond, BC
+                                V6X 1M3 Canada
+                            </p>
+                            <p class="text-primary font-bold">
+                                info@kentwoodhomes.ca<br />604.288.8282
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

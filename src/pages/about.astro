@@ -1,0 +1,245 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import kwh1 from "../assets/kwh-1.png";
+import woh1 from "../assets/woh-1.png";
+import woh2 from "../assets/woh-2.png";
+import bop1 from "../assets/bop-1.png";
+import bop2 from "../assets/bop-2.png";
+import bop3 from "../assets/bop-3.png";
+---
+
+<Layout title="About Us">
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center gap-16">
+                    <div class="flex-1 space-y-8">
+                        <h1 class="text-5xl font-bold uppercase tracking-tight">
+                            <span class="text-primary italic">Kentwood</span> Homes
+                        </h1>
+                        <p class="text-xl font-semibold text-secondary/80">
+                            Our Story
+                        </p>
+                        <div
+                            class="space-y-6 text-secondary/70 text-lg leading-relaxed"
+                        >
+                            <p>
+                                Kentwood is a group of forward-building custom
+                                builders based in Richmond, Vancouver.
+                                Multi-award winning, we specialize in
+                                high-quality architectural design with a Focus
+                                on craft, efficiency, and aesthetics.
+                            </p>
+                            <p>
+                                Each home is designed with high standards of
+                                design and durability, using modern
+                                energy-efficient materials and appliances to
+                                reduce environmental impact and lower utility
+                                costs. We are committed to providing our
+                                homeowners with a house they can be proud of,
+                                with a focus on quality, value, and customer
+                                satisfaction.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <Image
+                            src={kwh1}
+                            alt="Kentwood Home"
+                            class="rounded-2xl shadow-xl w-full"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Our Homes Stand Above The Rest -->
+        <section class="py-24 bg-bg-cream">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row gap-16">
+                    <div class="flex-1 space-y-12">
+                        <div class="grid grid-cols-2 gap-4">
+                            <Image
+                                src={woh1}
+                                alt="Work 1"
+                                class="rounded-xl shadow-lg"
+                            />
+                            <Image
+                                src={woh2}
+                                alt="Work 2"
+                                class="rounded-xl shadow-lg"
+                            />
+                        </div>
+                    </div>
+
+                    <div class="flex-1 space-y-8">
+                        <h2 class="text-4xl font-bold uppercase text-secondary">
+                            Why Our Homes <span class="text-primary italic"
+                                >Stand Above</span
+                            > The Rest
+                        </h2>
+
+                        <div class="space-y-8">
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-primary italic mb-2"
+                                >
+                                    On Time, On Budget, On Vision
+                                </h3>
+                                <p class="text-secondary/70">
+                                    Building your home is a big commitment and
+                                    requires trust, which is why we value open
+                                    communication and transparency. Our team
+                                    manages every project with a focused
+                                    attention to detail, ensuring that our
+                                    client's expectations are not just met, but
+                                    exceeded.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-primary italic mb-2"
+                                >
+                                    Innovative Approach, Stronger Builds
+                                </h3>
+                                <p class="text-secondary/70">
+                                    Our process connects you with the best
+                                    industry professionals from the beginning,
+                                    ensuring every home we build stands as a
+                                    testament to craftsmanship and
+                                    forward-thinking design. We utilize
+                                    cutting-edge technology and materials to
+                                    ensure longevity and efficiency.
+                                </p>
+                            </div>
+
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-primary italic mb-2"
+                                >
+                                    Sustainable Design, Innovative Methods
+                                </h3>
+                                <p class="text-secondary/70">
+                                    We believe that a better future starts with
+                                    sustainable building methods and
+                                    technologies. From energy-efficient
+                                    insulation to solar-ready designs, our
+                                    multiplex homes are built with both your
+                                    comfort and the planet in mind.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Kentwood Approach -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold uppercase text-center mb-16">
+                    The <span class="text-primary italic">Kentwood</span> Approach
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-12">
+                        <div class="flex gap-6">
+                            <div class="text-primary font-bold text-3xl">
+                                01
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-secondary mb-2"
+                                >
+                                    Planning & Acquisition
+                                </h3>
+                                <p class="text-secondary/70">
+                                    We start by identifying the right locations
+                                    for our multiplex developments, focusing on
+                                    areas with strong growth potential and
+                                    community amenities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="text-primary font-bold text-3xl">
+                                02
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-secondary mb-2"
+                                >
+                                    Design
+                                </h3>
+                                <p class="text-secondary/70">
+                                    Our design team works closely with leading
+                                    architects to create homes that are as
+                                    beautiful as they are functional.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="text-primary font-bold text-3xl">
+                                03
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-secondary mb-2"
+                                >
+                                    Building & Development
+                                </h3>
+                                <p class="text-secondary/70">
+                                    Our experienced construction team ensures
+                                    that every build meets our high standards
+                                    for quality and craftsmanship.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-6">
+                            <div class="text-primary font-bold text-3xl">
+                                04
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-bold text-secondary mb-2"
+                                >
+                                    Post Development Care
+                                </h3>
+                                <p class="text-secondary/70">
+                                    Our commitment to our homeowners doesn't end
+                                    with a sale. We provide comprehensive
+                                    after-care and support.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <Image
+                            src={bop1}
+                            alt="BOP 1"
+                            class="rounded-xl shadow-md w-full"
+                        />
+                        <Image
+                            src={bop2}
+                            alt="BOP 2"
+                            class="rounded-xl shadow-md w-full"
+                        />
+                        <Image
+                            src={bop3}
+                            alt="BOP 3"
+                            class="rounded-xl shadow-md w-full col-span-2"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>

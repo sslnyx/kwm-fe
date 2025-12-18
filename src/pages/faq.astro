@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import faq1 from "../assets/faq-1.png";
+
+const faqs = [
+    {
+        question: "What is a Multiplex?",
+        answer: "A multiplex is a multi-unit dwelling that houses two or more families within a single building. It can include side-by-side or stacked units, offering a more dense but efficient urban living solution without the scale of large apartment buildings.",
+    },
+    {
+        question: "Benefits of Multiplex Living?",
+        answer: "Multiplex living offers several benefits, including more affordable housing options, increased density in popular neighborhoods, and the opportunity for multi-generational living or rental income while maintaining privacy.",
+    },
+    {
+        question: "Where Can Multiplex Homes be Located?",
+        answer: "Following the R1-1 zoning changes in Vancouver, multiplexes can now be built on many single-family lots throughout the city, provided they meet specific size and site requirements.",
+    },
+    {
+        question: "How Long is the Construction Process?",
+        answer: "The construction of a multiplex typically takes 12 to 18 months, depending on the complexity of the project, site preparation, and weather conditions.",
+    },
+    {
+        question: "What is the Minimum Lot Size for a Multiplex House?",
+        answer: "The minimum lot size varies by municipality and zoning. In Vancouver, the minimum lot width for a multiplex is typically 33 feet, but the total area must support the desired density and meet setback requirements.",
+    },
+];
+---
+
+<Layout title="FAQs">
+    <main class="pt-20">
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-4 max-w-5xl">
+                <h1 class="text-5xl font-bold uppercase text-center mb-16">
+                    Frequently <span class="text-primary italic">Asked</span> Questions
+                </h1>
+
+                <div class="flex flex-col md:flex-row gap-16">
+                    <div class="flex-1 space-y-4">
+                        {
+                            faqs.map((faq, index) => (
+                                <details class="group bg-bg-cream rounded-2xl p-6 border border-primary/5 cursor-pointer">
+                                    <summary class="flex items-center justify-between font-bold text-lg text-secondary list-none">
+                                        {faq.question}
+                                        <span class="text-primary transition-transform group-open:rotate-180">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                stroke-width="2"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            >
+                                                <polyline points="6 9 12 15 18 9" />
+                                            </svg>
+                                        </span>
+                                    </summary>
+                                    <div class="mt-4 text-secondary/70 leading-relaxed">
+                                        {faq.answer}
+                                    </div>
+                                </details>
+                            ))
+                        }
+                    </div>
+
+                    <div class="flex-1">
+                        <Image
+                            src={faq1}
+                            alt="FAQ Visual"
+                            class="rounded-2xl shadow-xl w-full sticky top-32"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    details summary::-webkit-details-marker {
+        display: none;
+    }
+</style>
