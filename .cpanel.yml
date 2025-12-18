@@ -1,6 +1,6 @@
 ---
 deployment:
   tasks:
-    # IMPORTANT: Change 'username' to your actual cPanel username
-    - export DEPLOYPATH=/home/username/public_html/
+    # Set the path to your public_html folder
+    - export DEPLOYPATH=/home/dotdesign/public_html/
     - /bin/cp -R dist/* $DEPLOYPATH
