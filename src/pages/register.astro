@@ -296,3 +296,99 @@ import Layout from "../layouts/Layout.astro";
         transform: translate(-50%, -50%);
     }
 </style>
+
+<script>
+    const API_BASE_URL =
+        import.meta.env.PUBLIC_API_URL || "https://kmw-app.irix.design/api";
+
+    const form = document.querySelector("form") as HTMLFormElement | null;
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const submitBtn = form.querySelector(
+                'button[type="submit"]',
+            ) as HTMLButtonElement | null;
+            if (!submitBtn) return;
+
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = "Submitting...";
+            submitBtn.disabled = true;
+
+            // Collect checkbox values as arrays
+            const getCheckedValues = (name: string): string[] => {
+                const checkboxes = form.querySelectorAll(
+                    `input[name="${name}"]:checked`,
+                ) as NodeListOf<HTMLInputElement>;
+                return Array.from(checkboxes).map((cb) => cb.value);
+            };
+
+            const data = {
+                firstName:
+                    (form.querySelector("#firstName") as HTMLInputElement)
+                        ?.value || "",
+                lastName:
+                    (form.querySelector("#lastName") as HTMLInputElement)
+                        ?.value || "",
+                email:
+                    (form.querySelector("#email") as HTMLInputElement)?.value ||
+                    "",
+                phone:
+                    (form.querySelector("#phone") as HTMLInputElement)?.value ||
+                    "",
+                projects: getCheckedValues("projects"),
+                roles: getCheckedValues("roles"),
+                source: getCheckedValues("source"),
+                comments:
+                    (form.querySelector("#comments") as HTMLTextAreaElement)
+                        ?.value || "",
+                consent:
+                    (form.querySelector("#consent") as HTMLInputElement)
+                        ?.checked || false,
+            };
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/register`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Show success message
+                    const container = form.closest(".container");
+                    if (container) {
+                        container.innerHTML = `
+                            <div class="text-center py-16">
+                                <div class="text-6xl mb-6 text-primary">✓</div>
+                                <h2 class="text-3xl font-bold text-primary italic mb-4">Thank You!</h2>
+                                <p class="text-secondary/70 text-lg max-w-md mx-auto">${result.message}</p>
+                                <a href="/" class="inline-block mt-8 bg-primary text-white font-bold px-8 py-3 rounded-full hover:bg-primary/90 transition-all">
+                                    Back to Home
+                                </a>
+                            </div>
+                        `;
+                    }
+                } else {
+                    // Show validation errors
+                    const errors = Object.values(result.errors || {})
+                        .flat()
+                        .join("\n");
+                    alert("Please fix the following errors:\n" + errors);
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error("Form submission error:", error);
+                alert("Something went wrong. Please try again later.");
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+</script>
