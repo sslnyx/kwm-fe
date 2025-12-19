@@ -14,6 +14,14 @@
     body {
         @apply bg-bg-light text-secondary font-body;
     }
+
+    .container {
+        max-width: 1280px !important;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
 }
 
 @layer utilities {
