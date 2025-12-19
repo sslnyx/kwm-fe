@@ -5,109 +5,234 @@ import { Image } from "astro:assets";
 import contactImg from "../assets/git-1.png";
 ---
 
-<Layout title="Contact Us">
+<Layout title="Get in Touch - Kentwood Homes">
     <main class="pt-20">
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-4 max-w-6xl">
-                <div class="flex flex-col lg:flex-row gap-16 items-center">
-                    <div class="flex-1 space-y-8">
-                        <h1
-                            class="text-6xl font-black uppercase text-secondary tracking-tighter"
+        <!-- Main Section Container with partitioned background -->
+        <section class="min-h-screen bg-[#F3F4F6] relative">
+            <!-- Desktop View: Side-by-Side Flex with Overlap -->
+            <div class="hidden lg:flex min-h-[90vh]">
+                <!-- Left Content: Image + Info (Stacked) -->
+                <div class="w-full">
+                    <!-- Image with Title -->
+                    <div class="h-[65vh] relative">
+                        <Image
+                            src={contactImg}
+                            alt="Kentwood Multiplex Architecture"
+                            class="w-full h-full object-cover"
+                        />
+                        <!-- Subtle overlay for text readability -->
+                        <div class="absolute inset-0 bg-black/5"></div>
+                        <!-- Large Header Title -->
+                        <div
+                            class="absolute inset-0 flex items-center px-16 xl:px-24"
                         >
-                            Get in <span class="text-primary italic">Touch</span
+                            <h1
+                                class="text-7xl xl:text-8xl font-black leading-none tracking-tighter"
                             >
-                        </h1>
+                                <span class="text-white">Get in </span>
+                                <br />
+                                <span class="text-primary italic">Touch</span>
+                            </h1>
+                        </div>
+                    </div>
 
+                    <!-- Contact Info (Bottom Left) -->
+                    <div class="flex-grow bg-[#F3F4F6] px-16 xl:px-24 py-16">
+                        <div class="space-y-6">
+                            <h2 class="text-2xl font-bold text-secondary">
+                                Kentwood Homes | Multiplex
+                            </h2>
+                            <div
+                                class="text-lg text-secondary/80 space-y-1 font-medium leading-relaxed"
+                            >
+                                <p>1030 - 8477 Bridgeport Road</p>
+                                <p>Richmond, BC V6X 0S8 Canada</p>
+                                <p class="pt-4">info@kentwoodhomes.ca</p>
+                                <p>672.335.0088</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Content: Form Card Floating -->
+                <div
+                    class="absolute right-0 w-1/2 h-full flex items-center justify-center"
+                >
+                    <!-- The Card -->
+                    <div
+                        class="w-full max-w-lg bg-white p-12 xl:p-14 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] z-20 relative -mt-32"
+                    >
                         <form class="space-y-6">
-                            <div>
+                            <div class="space-y-1.5">
                                 <label
                                     for="name"
-                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
-                                    >Name*</label
+                                    class="block font-bold text-secondary text-sm"
+                                    >Name *</label
                                 >
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
                                     required
-                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                    class="w-full border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-primary transition-colors"
                                 />
                             </div>
 
-                            <div>
+                            <div class="space-y-1.5">
                                 <label
                                     for="email"
-                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
-                                    >Email*</label
+                                    class="block font-bold text-secondary text-sm"
+                                    >Email *</label
                                 >
                                 <input
                                     type="email"
                                     id="email"
                                     name="email"
                                     required
-                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                    class="w-full border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-primary transition-colors"
                                 />
                             </div>
 
-                            <div>
+                            <div class="space-y-1.5">
                                 <label
                                     for="phone"
-                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
-                                    >Phone*</label
+                                    class="block font-bold text-secondary text-sm"
+                                    >Phone *</label
                                 >
                                 <input
                                     type="tel"
                                     id="phone"
                                     name="phone"
                                     required
-                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                    class="w-full border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-primary transition-colors"
                                 />
                             </div>
 
-                            <div>
+                            <div class="space-y-1.5">
                                 <label
                                     for="message"
-                                    class="block text-sm font-bold uppercase tracking-widest text-secondary/50 mb-2"
-                                    >Message</label
+                                    class="block font-bold text-secondary text-sm"
+                                    >Message :</label
                                 >
                                 <textarea
                                     id="message"
                                     name="message"
-                                    rows="5"
-                                    class="w-full bg-bg-cream border-none rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary outline-none transition-all resize-none"
+                                    rows="9"
+                                    class="w-full border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-primary transition-colors resize-none"
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
-                                class="w-full bg-primary text-white font-bold uppercase py-5 rounded-full hover:scale-[1.02] transition-transform shadow-lg shadow-primary/20"
+                                class="w-full bg-primary text-white font-bold text-2xl py-4 rounded-md hover:bg-primary/90 transition-all shadow-md mt-4"
                             >
                                 Submit
                             </button>
                         </form>
                     </div>
 
-                    <div class="flex-1 relative">
-                        <Image
-                            src={contactImg}
-                            alt="Contact Kentwood"
-                            class="rounded-[2.5rem] shadow-2xl w-full sticky top-32"
-                        />
-                        <div class="mt-12 space-y-4 text-center lg:text-left">
-                            <p class="text-secondary font-bold">
-                                Kentwood Homes / Multiplex
-                            </p>
-                            <p class="text-secondary/70">
-                                8580 - 2677 Bridgeport Road<br />Richmond, BC
-                                V6X 1M3 Canada
-                            </p>
-                            <p class="text-primary font-bold">
-                                info@kentwoodhomes.ca<br />604.288.8282
-                            </p>
-                        </div>
+                    <!-- Secondary background area to complete the partitioned look -->
+                    <div class="absolute inset-0 z-0 h-[65vh] bg-transparent">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 right-0 z-0 h-[calc(100%-65vh)] bg-[#F3F4F6]"
+                    >
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile View: Stacked Layout -->
+            <div class="lg:hidden flex flex-col">
+                <!-- Header Image -->
+                <div class="relative h-[350px]">
+                    <Image
+                        src={contactImg}
+                        alt="Contact Kentwood Homes"
+                        class="w-full h-full object-cover"
+                    />
+                    <div
+                        class="absolute inset-0 bg-black/20 flex items-center px-8"
+                    >
+                        <h1 class="text-5xl font-black text-white leading-none">
+                            Get in <br />
+                            <span class="text-primary italic">Touch</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- Form Card Overlay -->
+                <div class="px-6 -mt-10 relative z-10 pb-12">
+                    <div class="bg-white p-8 shadow-xl rounded-lg">
+                        <form class="space-y-5">
+                            <div>
+                                <label
+                                    class="block font-bold text-secondary text-sm mb-1"
+                                    >Name *</label
+                                >
+                                <input
+                                    type="text"
+                                    class="w-full border border-gray-300 rounded-md px-4 py-3"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block font-bold text-secondary text-sm mb-1"
+                                    >Email *</label
+                                >
+                                <input
+                                    type="email"
+                                    class="w-full border border-gray-300 rounded-md px-4 py-3"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block font-bold text-secondary text-sm mb-1"
+                                    >Phone *</label
+                                >
+                                <input
+                                    type="tel"
+                                    class="w-full border border-gray-300 rounded-md px-4 py-3"
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    class="block font-bold text-secondary text-sm mb-1"
+                                    >Message :</label
+                                >
+                                <textarea
+                                    rows="6"
+                                    class="w-full border border-gray-300 rounded-md px-4 py-3"
+                                ></textarea>
+                            </div>
+                            <button
+                                class="w-full bg-primary text-white font-bold text-xl py-4 rounded-md"
+                                >Submit</button
+                            >
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Info Section -->
+                <div class="bg-[#F3F4F6] px-8 py-12 space-y-6">
+                    <h2 class="text-2xl font-bold text-secondary line-after">
+                        Kentwood Homes | Multiplex
+                    </h2>
+                    <div class="text-secondary/70 space-y-1 font-medium">
+                        <p>1030 - 8477 Bridgeport Road</p>
+                        <p>Richmond, BC V6X 0S8 Canada</p>
+                        <p class="pt-2 italic">info@kentwoodhomes.ca</p>
+                        <p>672.335.0088</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 </Layout>
+
+<style>
+    /* Styling to match the typography and layout precision */
+    .line-after {
+        position: relative;
+        display: inline-block;
+    }
+</style>

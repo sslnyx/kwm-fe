@@ -32,10 +32,46 @@ const {
 		/>
 		<ClientRouter />
 	</head>
-	<body>
+	<body class="bg-bg-light">
 		<Header />
 		<slot />
 		<Footer />
+
+		<script is:inline>
+			function initAnimations() {
+				const observerOptions = {
+					threshold: 0.1,
+					rootMargin: "0px 0px -50px 0px",
+				};
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("active");
+							observer.unobserve(entry.target);
+						}
+					});
+				}, observerOptions);
+
+				const revealElements = document.querySelectorAll(".reveal");
+				revealElements.forEach((el, index) => {
+					// Add slight delay for staggered effect if multiple items exist
+					if (
+						el.parentElement &&
+						el.parentElement.classList.contains("grid")
+					) {
+						el.style.transitionDelay = `${(index % 3) * 0.1}s`;
+					}
+					observer.observe(el);
+				});
+			}
+
+			// Initialize
+			initAnimations();
+
+			// Re-initialize after Astro page transitions
+			document.addEventListener("astro:page-load", initAnimations);
+		</script>
 	</body>
 </html>
 

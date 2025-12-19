@@ -7,72 +7,120 @@ import faq1 from "../assets/faq-1.png";
 const faqs = [
     {
         question: "What is a Multiplex?",
-        answer: "A multiplex is a multi-unit dwelling that houses two or more families within a single building. It can include side-by-side or stacked units, offering a more dense but efficient urban living solution without the scale of large apartment buildings.",
+        answer: "A multiplex is a residential building that typically includes two to six individual homes on a single lot, offering a smart blend of privacy, flexibility, and efficient land use. Designed for a range of lifestyles, from young families to rightsizing seniors, multiplex homes provide adaptable living options without sacrificing comfort. With modern layouts, thoughtful design and energy-saving features, they support sustainable, future-ready urban living.",
     },
     {
-        question: "Benefits of Multiplex Living?",
-        answer: "Multiplex living offers several benefits, including more affordable housing options, increased density in popular neighborhoods, and the opportunity for multi-generational living or rental income while maintaining privacy.",
+        question: "Benefits of Multiplex Living",
+        answer: "Multiplex homes are typically non-strata, meaning homeowners fully own both their unit and the land with no strata fees, no bylaws and no unnecessary restrictions. This gives owners greater control over their property, from landscaping choices to long-term upgrades and renovations. Full land ownership also supports stronger investment potential and future flexibility. For those seeking independence and lasting value, multiplex living offers a more practical, empowering alternative to traditional townhomes.",
+        defaultOpen: true,
     },
     {
         question: "Where Can Multiplex Homes be Located?",
-        answer: "Following the R1-1 zoning changes in Vancouver, multiplexes can now be built on many single-family lots throughout the city, provided they meet specific size and site requirements.",
+        answer: "Multiplex homes are now permitted citywide across many areas that were previously single-detached–only zones. Under Vancouver's new R1-1 Residential Inclusive Zone, which consolidates multiple low-density zones, multiplex development is now allowed on a wide range of lots throughout the city.",
     },
     {
         question: "How Long is the Construction Process?",
-        answer: "The construction of a multiplex typically takes 12 to 18 months, depending on the complexity of the project, site preparation, and weather conditions.",
+        answer: "The design and permit phase typically takes 6 to 12 months, followed by 12 to 18 months of construction, resulting in a total timeline of approximately 18 to 30 months.",
     },
     {
-        question: "What is the Minimum Lot Size for a Multiplex House?",
-        answer: "The minimum lot size varies by municipality and zoning. In Vancouver, the minimum lot width for a multiplex is typically 33 feet, but the total area must support the desired density and meet setback requirements.",
+        question: "What is the Minimum Lot Size for a Multiplex Home?",
+        answer: `Not every property is suitable for multiplex development, so it's important to confirm whether your lot meets municipal requirements. Eligibility depends on factors such as lot size, width, access and environmental conditions.
+
+<strong>Zoning Regulations – Unit Count by Lot Size</strong>
+• 3–4 units: minimum lot size ~3,294 sq ft
+• 5 units: minimum lot size ~4,994 sq ft
+• 6 units: minimum lot size ~5,995 sq ft
+
+<strong>Site Requirements – Lot Width</strong>
+• Up to 4 units: minimum 32.8 ft
+• 5 units: minimum 44 ft
+• 6 units: minimum 50 ft
+
+<strong>Access</strong>
+• Street Frontage: Required for all multiplex lots
+• Rear Access: Must have a laneway`,
     },
 ];
 ---
 
 <Layout title="FAQs">
     <main class="pt-20">
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-4 max-w-5xl">
-                <h1 class="text-5xl font-bold uppercase text-center mb-16">
-                    Frequently <span class="text-primary italic">Asked</span> Questions
+        <section class="py-24 bg-gray-100 min-h-screen">
+            <div class="container mx-auto px-4">
+                <!-- Section Header -->
+                <h1
+                    class="text-4xl md:text-5xl font-bold text-secondary mb-16 leading-tight"
+                >
+                    Frequently <span class="text-primary italic">Asked</span><br
+                    />
+                    Questions
                 </h1>
 
-                <div class="flex flex-col md:flex-row gap-16">
-                    <div class="flex-1 space-y-4">
+                <div class="flex flex-col lg:flex-row gap-12 lg:gap-16">
+                    <!-- Left Column: Image with Decorative Dots -->
+                    <div class="lg:w-5/12 relative">
+                        <!-- Main Image -->
+                        <Image
+                            src={faq1}
+                            alt="Modern multiplex home interior"
+                            class="rounded-xl w-full relative z-10"
+                        />
+
+                        <!-- Decorative Dots Pattern Bottom Left -->
+                        <div
+                            class="absolute -bottom-6 -left-6 w-20 h-20 opacity-40"
+                            aria-hidden="true"
+                        >
+                            <svg
+                                width="100%"
+                                height="100%"
+                                viewBox="0 0 100 100"
+                            >
+                                {
+                                    Array.from({ length: 6 }).map((_, row) =>
+                                        Array.from({ length: 6 }).map(
+                                            (_, col) => (
+                                                <circle
+                                                    cx={col * 16 + 8}
+                                                    cy={row * 16 + 8}
+                                                    r="2.5"
+                                                    fill="currentColor"
+                                                    class="text-secondary/50"
+                                                />
+                                            ),
+                                        ),
+                                    )
+                                }
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: FAQ Accordion -->
+                    <div class="lg:w-7/12 space-y-4">
                         {
-                            faqs.map((faq, index) => (
-                                <details class="group bg-bg-cream rounded-2xl p-6 border border-primary/5 cursor-pointer">
-                                    <summary class="flex items-center justify-between font-bold text-lg text-secondary list-none">
-                                        {faq.question}
-                                        <span class="text-primary transition-transform group-open:rotate-180">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <polyline points="6 9 12 15 18 9" />
-                                            </svg>
+                            faqs.map((faq) => (
+                                <details
+                                    class="group bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+                                    open={faq.defaultOpen}
+                                >
+                                    <summary class="flex items-center justify-between p-6 font-bold text-lg text-secondary list-none cursor-pointer hover:bg-gray-50 transition-colors">
+                                        <span class="pr-4">{faq.question}</span>
+                                        <span class="flex-shrink-0 text-secondary/60 text-2xl font-light transition-transform">
+                                            <span class="group-open:hidden">
+                                                +
+                                            </span>
+                                            <span class="hidden group-open:inline">
+                                                −
+                                            </span>
                                         </span>
                                     </summary>
-                                    <div class="mt-4 text-secondary/70 leading-relaxed">
-                                        {faq.answer}
-                                    </div>
+                                    <div
+                                        class="px-6 pb-6 text-secondary/70 leading-relaxed border-t border-gray-100 pt-4 whitespace-pre-line"
+                                        set:html={faq.answer}
+                                    />
                                 </details>
                             ))
                         }
-                    </div>
-
-                    <div class="flex-1">
-                        <Image
-                            src={faq1}
-                            alt="FAQ Visual"
-                            class="rounded-2xl shadow-xl w-full sticky top-32"
-                        />
                     </div>
                 </div>
             </div>

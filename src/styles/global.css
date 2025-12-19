@@ -1,17 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #6FC24A;
-  --color-secondary: #3B2A1B;
-  --color-bg-light: #F4F5F6;
-  --color-bg-cream: #F9FBF1;
-  
-  --font-display: "Inter", "system-ui", sans-serif;
-  --font-body: "Inter", "system-ui", sans-serif;
+    --color-primary: #8FC24A;
+    --color-secondary: #4B3B2D;
+    --color-bg-light: #F4F5F6;
+    --color-bg-cream: #F9FBF1;
+
+    --font-display: "Inter", "system-ui", sans-serif;
+    --font-body: "Inter", "system-ui", sans-serif;
 }
 
 @layer base {
-  body {
-    @apply bg-bg-light text-secondary font-body;
-  }
+    body {
+        @apply bg-bg-light text-secondary font-body;
+    }
+}
+
+@layer utilities {
+    .reveal {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

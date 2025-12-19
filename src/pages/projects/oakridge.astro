@@ -1,43 +1,57 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { Image } from "astro:assets";
-
-import oakridgeLogo from "../../assets/Oakridge.svg";
 ---
 
-<Layout title="Oakridge - Project Overview">
+<Layout title="Oak - Kentwood Homes">
     <main class="pt-20">
-        <section class="py-24 bg-white">
-            <div class="container mx-auto px-4 text-center">
-                <Image
-                    src={oakridgeLogo}
-                    alt="Oakridge Logo"
-                    class="h-20 w-auto mx-auto mb-12"
-                />
-                <h1 class="text-6xl font-black uppercase text-secondary mb-6">
-                    Oakridge
-                </h1>
-                <p class="text-2xl text-secondary/60 italic mb-12">
-                    Oak & W 45th, Vancouver — Six 3-Bedroom Multiplexes
-                </p>
+        <!-- Full-Width Map Hero -->
+        <section class="relative">
+            <div class="w-full h-[50vh] md:h-[60vh]">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2607.5!2d-123.127!3d49.218!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5486739a4b4b4b4b%3A0x0!2sOak%20St%20%26%20W%2067th%20Ave%2C%20Vancouver%2C%20BC!5e0!3m2!1sen!2sca!4v1702951200000!5m2!1sen!2sca"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Oak Street Location Map"></iframe>
+            </div>
+        </section>
+
+        <!-- Project Info Section -->
+        <section class="py-12 bg-white border-b border-gray-100">
+            <div class="container mx-auto px-4">
+                <!-- Title Row with Register Button -->
                 <div
-                    class="max-w-2xl mx-auto p-12 bg-bg-cream rounded-[3rem] border border-primary/20"
+                    class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4"
                 >
-                    <p
-                        class="text-primary font-bold uppercase tracking-widest text-sm mb-4"
+                    <div
+                        class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4"
                     >
-                        Current Status
-                    </p>
-                    <h2
-                        class="text-4xl font-black text-secondary uppercase mb-8"
-                    >
-                        Coming Soon
-                    </h2>
+                        <h1
+                            class="text-3xl md:text-4xl font-bold text-secondary"
+                        >
+                            Oak
+                        </h1>
+                        <span class="text-secondary/60 text-lg">
+                            | Oak Street
+                        </span>
+                    </div>
                     <a
                         href="/register"
-                        class="bg-primary text-white px-12 py-5 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform inline-block"
-                        >Register for Updates</a
+                        class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-primary/90 transition-colors inline-block text-center shadow-md w-fit"
                     >
+                        Register Now
+                    </a>
+                </div>
+
+                <!-- Coming Soon Badge -->
+                <div class="space-y-1">
+                    <p class="text-primary font-bold uppercase tracking-wide">
+                        COMING SOON
+                    </p>
+                    <p class="text-secondary/60">Register for latest updates</p>
                 </div>
             </div>
         </section>

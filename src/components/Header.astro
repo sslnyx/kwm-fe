@@ -1,69 +1,253 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../assets/KWM-Logo.svg";
+import menuIcon from "../assets/menu.svg";
 ---
 
 <header
-    class="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100"
+    class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-100"
 >
-    <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+    <div class="container mx-auto px-6 h-28 flex items-center justify-between">
         <a href="/" class="flex items-center">
             <Image
                 src={logo}
                 alt="Kentwood Multiplex Logo"
-                class="h-10 w-auto"
+                class="h-12 w-auto"
             />
         </a>
 
-        <nav class="hidden md:flex items-center gap-8">
-            <a
-                href="/#projects"
-                class="text-secondary hover:text-primary transition-colors font-medium"
-                >Projects</a
-            >
-            <a
-                href="/about"
-                class="text-secondary hover:text-primary transition-colors font-medium"
-                >About</a
-            >
-            <a
-                href="/faq"
-                class="text-secondary hover:text-primary transition-colors font-medium"
-                >FAQs</a
-            >
-            <a
-                href="/contact"
-                class="text-secondary hover:text-primary transition-colors font-medium"
-                >Contact</a
-            >
-        </nav>
+        <button
+            id="menu-toggle"
+            class="hover:opacity-80 transition-opacity p-2"
+            aria-label="Open Menu"
+        >
+            <Image src={menuIcon} alt="Menu" class="w-10 h-10" />
+        </button>
+    </div>
+</header>
 
-        <div class="flex items-center gap-4">
-            <a
-                href="/register"
-                class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-sm"
+<!-- Premium Drawer Menu Overlay -->
+<div
+    id="drawer-overlay"
+    class="fixed inset-0 bg-secondary/60 backdrop-blur-md z-[60] opacity-0 pointer-events-none transition-opacity duration-500"
+>
+</div>
+
+<div
+    id="drawer"
+    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16, 1, 0.3, 1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)]"
+>
+    <div class="h-full flex flex-col p-12 overflow-y-auto">
+        <!-- Drawer Header -->
+        <div class="flex justify-between items-center mb-16">
+            <Image src={logo} alt="Kentwood Logo" class="h-8 w-auto" />
+            <button
+                id="menu-close"
+                class="text-secondary hover:text-primary transition-colors p-2"
+                aria-label="Close Menu"
             >
-                Register
-            </a>
-            <button class="md:hidden text-secondary p-2" aria-label="Menu">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
+                    width="32"
+                    height="32"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    ><line x1="3" y1="12" x2="21" y2="12"></line><line
-                        x1="3"
+                    ><line x1="18" y1="6" x2="6" y2="18"></line><line
+                        x1="6"
                         y1="6"
-                        x2="21"
-                        y2="6"></line><line x1="3" y1="18" x2="21" y2="18"
-                    ></line></svg
+                        x2="18"
+                        y2="18"></line></svg
                 >
             </button>
         </div>
+
+        <!-- Menu Content -->
+        <nav class="flex-grow space-y-12">
+            <!-- Project Categories -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3
+                        class="text-xs font-black uppercase tracking-[0.3em] text-secondary/40 border-b border-gray-100 pb-2"
+                    >
+                        Featured Projects
+                    </h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a
+                                href="/projects/mcgill"
+                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight"
+                                >McGill</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6">
+                    <h3
+                        class="text-xs font-black uppercase tracking-[0.3em] text-secondary/40 border-b border-gray-100 pb-2"
+                    >
+                        Upcoming Projects
+                    </h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a
+                                href="/projects/oakridge"
+                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight"
+                                >Oak</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="/projects/skeena"
+                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight"
+                                >Skeena</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Primary Links -->
+            <div class="space-y-6 pt-12 border-t border-gray-100">
+                <ul class="space-y-6">
+                    <li>
+                        <a
+                            href="/about"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic"
+                            >About</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/faq"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic"
+                            >FAQs</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href="/contact"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic"
+                            >Get In Touch</a
+                        >
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Footer -->
+        <div class="mt-auto pt-12">
+            <a
+                href="/register"
+                class="w-full bg-primary text-white py-6 rounded-full text-center font-black uppercase tracking-widest text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-xl block shadow-primary/20"
+            >
+                Register
+            </a>
+        </div>
     </div>
-</header>
+</div>
+
+<script is:inline>
+    function initMenu() {
+        let menuToggle = document.getElementById("menu-toggle");
+        let menuClose = document.getElementById("menu-close");
+        let drawer = document.getElementById("drawer");
+        let overlay = document.getElementById("drawer-overlay");
+        const header = document.querySelector("header");
+        const body = document.body;
+
+        function getScrollbarWidth() {
+            return window.innerWidth - document.documentElement.clientWidth;
+        }
+
+        // Reset menu state on page load
+        if (drawer) {
+            drawer.classList.add("translate-x-full");
+        }
+        if (overlay) {
+            overlay.classList.add("opacity-0", "pointer-events-none");
+        }
+        body.style.overflow = "";
+        body.style.paddingRight = "";
+        if (header) header.style.paddingRight = "";
+
+        function openMenu() {
+            const scrollbarWidth = getScrollbarWidth();
+            drawer?.classList.remove("translate-x-full");
+            overlay?.classList.remove("opacity-0", "pointer-events-none");
+
+            if (scrollbarWidth > 0) {
+                body.style.paddingRight = `${scrollbarWidth}px`;
+                if (header) header.style.paddingRight = `${scrollbarWidth}px`;
+            }
+            body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+            drawer?.classList.add("translate-x-full");
+            overlay?.classList.add("opacity-0", "pointer-events-none");
+
+            // Delay resetting overflow and padding until animation is partially done or just after
+            setTimeout(() => {
+                body.style.overflow = "";
+                body.style.paddingRight = "";
+                if (header) header.style.paddingRight = "";
+            }, 300);
+        }
+
+        // Remove old listeners by cloning elements and updating references
+        if (menuToggle) {
+            const newMenuToggle = menuToggle.cloneNode(true);
+            menuToggle.parentNode?.replaceChild(newMenuToggle, menuToggle);
+            menuToggle = newMenuToggle; // Update reference
+            menuToggle.addEventListener("click", openMenu);
+        }
+
+        if (menuClose) {
+            const newMenuClose = menuClose.cloneNode(true);
+            menuClose.parentNode?.replaceChild(newMenuClose, menuClose);
+            menuClose = newMenuClose; // Update reference
+            menuClose.addEventListener("click", closeMenu);
+        }
+
+        if (overlay) {
+            const newOverlay = overlay.cloneNode(true);
+            overlay.parentNode?.replaceChild(newOverlay, overlay);
+            overlay = newOverlay; // Update reference
+            overlay.addEventListener("click", closeMenu);
+        }
+
+        // Close on escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeMenu();
+        });
+
+        // Close drawer when clicking any link
+        const drawerLinks = drawer?.querySelectorAll("a");
+        drawerLinks?.forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+    }
+
+    // Initialize on first load
+    document.addEventListener("DOMContentLoaded", initMenu);
+
+    // Re-initialize after Astro page transitions
+    document.addEventListener("astro:page-load", initMenu);
+
+    // Also close menu before navigation starts
+    document.addEventListener("astro:before-preparation", () => {
+        const drawer = document.getElementById("drawer");
+        const overlay = document.getElementById("drawer-overlay");
+        const header = document.querySelector("header");
+        drawer?.classList.add("translate-x-full");
+        overlay?.classList.add("opacity-0", "pointer-events-none");
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
+        if (header) header.style.paddingRight = "";
+    });
+</script>

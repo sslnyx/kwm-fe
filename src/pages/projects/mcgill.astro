@@ -3,137 +3,137 @@ import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 
 import mcgillRender from "../../assets/mcgill-render.png";
-import mcgillLogo from "../../assets/mcgill.svg";
 ---
 
-<Layout title="McGill - Project Overview">
+<Layout title="McGill - Kentwood Homes">
     <main class="pt-20">
-        <!-- Project Hero -->
+        <!-- Full-Width Hero Image -->
+        <section class="relative">
+            <Image
+                src={mcgillRender}
+                alt="McGill Multiplex - Modern living in Vancouver"
+                class="w-full h-[50vh] md:h-[60vh] lg:h-[70vh] object-cover"
+            />
+        </section>
+
+        <!-- Project Info Section -->
         <section class="py-12 bg-white">
             <div class="container mx-auto px-4">
-                <div class="flex items-center gap-4 mb-8">
-                    <Image
-                        src={mcgillLogo}
-                        alt="McGill Logo"
-                        class="h-12 w-auto"
-                    />
+                <!-- Title Row with Register Button -->
+                <div
+                    class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4"
+                >
+                    <div
+                        class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4"
+                    >
+                        <h1
+                            class="text-3xl md:text-4xl font-bold text-secondary"
+                        >
+                            McGill
+                        </h1>
+                        <span class="text-secondary/60 text-lg">
+                            | 2905 McGILL ST. Vancouver
+                        </span>
+                    </div>
+                    <a
+                        href="/register"
+                        class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-primary/90 transition-colors inline-block text-center shadow-md w-fit"
+                    >
+                        Register Now
+                    </a>
                 </div>
 
-                <nav
-                    class="flex gap-8 border-b border-gray-100 pb-4 mb-12 uppercase text-xs font-bold tracking-widest text-secondary/40"
-                >
-                    <a
-                        href="#overview"
-                        class="text-primary border-b-2 border-primary pb-4 -mb-[18px]"
-                        >Overview</a
-                    >
-                    <a
-                        href="#location"
-                        class="hover:text-secondary transition-colors"
-                        >Location</a
-                    >
-                    <a
-                        href="#neighborhood"
-                        class="hover:text-secondary transition-colors"
-                        >Neighborhood</a
-                    >
-                    <a
-                        href="#floorplans"
-                        class="hover:text-secondary transition-colors"
-                        >Floor Plans</a
-                    >
-                </nav>
+                <!-- Subtitle -->
+                <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8">
+                    3 Bedroom, 2 Bath + Flex
+                </h2>
 
-                <div class="grid lg:grid-cols-2 gap-16 items-start">
-                    <div class="space-y-8">
-                        <h1
-                            class="text-5xl font-black text-secondary leading-none uppercase"
-                        >
-                            McGill <span class="text-primary italic"
-                                >— 4680 McGill St</span>
-                        </h1>
-                        <p class="text-2xl font-bold text-secondary/80 italic">
-                            3 Bedroom, 3 Bath + Flex
+                <!-- Content Grid -->
+                <div class="grid lg:grid-cols-2 gap-12 items-start">
+                    <!-- Left: Description -->
+                    <div class="space-y-6">
+                        <p class="text-secondary/70 leading-relaxed text-lg">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate velit esse cillum dolore
+                            eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia
+                            deserunt mollit anim id est laborum.
                         </p>
 
-                        <div class="prose prose-lg text-secondary/70">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in
-                                reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur.
-                            </p>
-                        </div>
-
-                        <div class="pt-8">
-                            <a
-                                href="/register"
-                                class="bg-primary text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-transform inline-block shadow-lg"
-                                >Register Now</a
+                        <a
+                            href="#details"
+                            class="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-wide text-sm hover:gap-3 transition-all group"
+                        >
+                            LEARN MORE
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="group-hover:translate-x-1 transition-transform"
                             >
-                        </div>
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </a>
                     </div>
 
-                    <div class="relative">
-                        <Image
-                            src={mcgillRender}
-                            alt="McGill Render"
-                            class="rounded-2xl shadow-2xl w-full"
-                        />
-                        <div
-                            class="absolute -bottom-8 -left-8 bg-bg-cream p-8 rounded-2xl shadow-xl max-w-xs border border-primary/10"
-                        >
-                            <p class="text-primary font-black text-4xl mb-2">
-                                3.5%
-                            </p>
-                            <p
-                                class="text-secondary/60 text-sm font-bold uppercase tracking-widest"
-                            >
-                                Expected Yield
-                            </p>
-                        </div>
+                    <!-- Right: Map -->
+                    <div
+                        class="rounded-xl overflow-hidden shadow-lg h-[300px] lg:h-[350px]"
+                    >
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.8897251442!2d-123.03842792346816!3d49.28374147138853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x548676e5b7e5f8d7%3A0x6e0c0d4e9e3b5c0e!2sMcGill%20St%2C%20Vancouver%2C%20BC!5e0!3m2!1sen!2sca!4v1702951200000!5m2!1sen!2sca"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="McGill Street Location Map"></iframe>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Project Features -->
-        <section class="py-24 bg-bg-cream">
+        <!-- Project Features Section -->
+        <!-- <section id="details" class="py-24 bg-bg-cream">
             <div class="container mx-auto px-4">
-                <div class="grid md:grid-cols-3 gap-12">
-                    <div class="bg-white p-10 rounded-3xl shadow-sm space-y-4">
-                        <h3
-                            class="text-xl font-bold text-secondary uppercase italic"
-                        >
+                <h2 class="text-3xl font-bold text-secondary mb-12">
+                    Project <span class="text-primary italic">Features</span>
+                </h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm space-y-4">
+                        <h3 class="text-xl font-bold text-secondary">
                             Smart Efficiency
                         </h3>
-                        <p class="text-secondary/60">
+                        <p class="text-secondary/60 leading-relaxed">
                             Built with the latest energy-efficient technologies
                             to reduce costs and environmental footprint.
                         </p>
                     </div>
-                    <div class="bg-white p-10 rounded-3xl shadow-sm space-y-4">
-                        <h3
-                            class="text-xl font-bold text-secondary uppercase italic"
-                        >
+                    <div class="bg-white p-8 rounded-2xl shadow-sm space-y-4">
+                        <h3 class="text-xl font-bold text-secondary">
                             Modern Design
                         </h3>
-                        <p class="text-secondary/60">
+                        <p class="text-secondary/60 leading-relaxed">
                             Clean lines, open-concept living, and premium
                             finishes standard in every home.
                         </p>
                     </div>
-                    <div class="bg-white p-10 rounded-3xl shadow-sm space-y-4">
-                        <h3
-                            class="text-xl font-bold text-secondary uppercase italic"
-                        >
+                    <div class="bg-white p-8 rounded-2xl shadow-sm space-y-4">
+                        <h3 class="text-xl font-bold text-secondary">
                             Prime Location
                         </h3>
-                        <p class="text-secondary/60">
+                        <p class="text-secondary/60 leading-relaxed">
                             Situated in one of the most sought-after
                             neighborhoods with easy access to transit and
                             amenities.
@@ -141,6 +141,6 @@ import mcgillLogo from "../../assets/mcgill.svg";
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
     </main>
 </Layout>

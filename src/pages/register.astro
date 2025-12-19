@@ -2,97 +2,89 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Register">
+<Layout title="Register - Kentwood Homes">
     <main class="pt-20">
-        <section class="py-24 bg-bg-cream min-h-screen">
-            <div
-                class="container mx-auto px-4 max-w-4xl bg-white rounded-[3rem] p-12 md:p-20 shadow-xl border border-primary/5"
-            >
-                <div class="text-center mb-16">
-                    <h1 class="text-5xl font-black uppercase text-primary mb-6">
+        <section class="py-16 bg-white min-h-screen">
+            <div class="container mx-auto px-4 max-w-2xl">
+                <!-- Header -->
+                <div class="mb-10">
+                    <h1
+                        class="text-4xl md:text-5xl font-bold text-primary italic mb-4"
+                    >
                         Register
                     </h1>
-                    <p class="text-xl text-secondary/60">
+                    <p class="text-secondary/70 text-lg">
                         Stay in the loop on new builds, upcoming projects and
-                        finish opportunities to make one yours.
+                        fresh opportunities to make one yours.
                     </p>
                 </div>
 
                 <form class="space-y-8">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-2">
-                            <label
-                                for="firstName"
-                                class="text-xs font-bold uppercase tracking-widest text-secondary/40 px-2"
-                                >First Name</label
-                            >
+                    <!-- Name Fields -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
                             <input
                                 type="text"
                                 id="firstName"
-                                class="w-full bg-bg-light/50 border-b-2 border-primary/10 px-4 py-3 focus:border-primary outline-none transition-all rounded-lg"
+                                name="firstName"
+                                placeholder="First Name"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 required
                             />
                         </div>
-                        <div class="space-y-2">
-                            <label
-                                for="lastName"
-                                class="text-xs font-bold uppercase tracking-widest text-secondary/40 px-2"
-                                >Last Name</label
-                            >
+                        <div>
                             <input
                                 type="text"
                                 id="lastName"
-                                class="w-full bg-bg-light/50 border-b-2 border-primary/10 px-4 py-3 focus:border-primary outline-none transition-all rounded-lg"
+                                name="lastName"
+                                placeholder="Last Name"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 required
                             />
                         </div>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-2">
-                            <label
-                                for="email"
-                                class="text-xs font-bold uppercase tracking-widest text-secondary/40 px-2"
-                                >Email</label
-                            >
+                    <!-- Contact Fields -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
                             <input
                                 type="email"
                                 id="email"
-                                class="w-full bg-bg-light/50 border-b-2 border-primary/10 px-4 py-3 focus:border-primary outline-none transition-all rounded-lg"
+                                name="email"
+                                placeholder="Email"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 required
                             />
                         </div>
-                        <div class="space-y-2">
-                            <label
-                                for="phone"
-                                class="text-xs font-bold uppercase tracking-widest text-secondary/40 px-2"
-                                >Phone</label
-                            >
+                        <div>
                             <input
                                 type="tel"
                                 id="phone"
-                                class="w-full bg-bg-light/50 border-b-2 border-primary/10 px-4 py-3 focus:border-primary outline-none transition-all rounded-lg"
-                                required
+                                name="phone"
+                                placeholder="Phone"
+                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                             />
                         </div>
                     </div>
 
+                    <!-- Project Interest -->
                     <div class="space-y-4">
-                        <p
-                            class="text-sm font-bold uppercase tracking-widest text-secondary/60"
-                        >
-                            Which project are you interested in?
+                        <p class="font-bold text-secondary">
+                            Which project are you interested in:
                         </p>
-                        <div class="flex flex-wrap gap-6">
+                        <div class="flex flex-wrap gap-8">
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
                                     type="checkbox"
-                                    class="accent-primary w-5 h-5 rounded"
+                                    name="projects"
+                                    value="mcgill"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium italic"
-                                    >McGill</span
+                                <span class="text-primary font-semibold"
+                                    >Mc<span class="text-secondary">Gill</span
+                                    ></span
                                 >
                             </label>
                             <label
@@ -100,9 +92,11 @@ import Layout from "../layouts/Layout.astro";
                             >
                                 <input
                                     type="checkbox"
-                                    class="accent-primary w-5 h-5 rounded"
+                                    name="projects"
+                                    value="skeena"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium italic"
+                                <span class="text-primary font-semibold"
                                     >Skeena</span
                                 >
                             </label>
@@ -111,165 +105,194 @@ import Layout from "../layouts/Layout.astro";
                             >
                                 <input
                                     type="checkbox"
-                                    class="accent-primary w-5 h-5 rounded"
+                                    name="projects"
+                                    value="oakridge"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium italic"
-                                    >OakRidge</span
+                                <span class="text-primary font-semibold"
+                                    >Oak<span class="text-secondary">Ridge</span
+                                    ></span
                                 >
                             </label>
                         </div>
                     </div>
 
+                    <!-- Role -->
                     <div class="space-y-4">
-                        <p
-                            class="text-sm font-bold uppercase tracking-widest text-secondary/60"
-                        >
-                            Are you a: (Check the most suitable role)
-                        </p>
-                        <div class="flex flex-wrap gap-6">
+                        <p class="font-bold text-secondary">Are you a:</p>
+                        <div class="flex flex-wrap gap-8">
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
-                                    name="role"
-                                    class="accent-primary w-5 h-5"
+                                    type="checkbox"
+                                    name="roles"
+                                    value="realtor"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Realtor</span
-                                >
+                                <span class="text-secondary">Realtor</span>
                             </label>
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
-                                    name="role"
-                                    class="accent-primary w-5 h-5"
+                                    type="checkbox"
+                                    name="roles"
+                                    value="investor"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Investor</span
-                                >
+                                <span class="text-secondary">Investor</span>
                             </label>
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
-                                    name="role"
-                                    class="accent-primary w-5 h-5"
+                                    type="checkbox"
+                                    name="roles"
+                                    value="homeowner"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Homeowner</span
-                                >
+                                <span class="text-secondary">Homeowner</span>
                             </label>
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
-                                    name="role"
-                                    class="accent-primary w-5 h-5"
+                                    type="checkbox"
+                                    name="roles"
+                                    value="buyer"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Buyer</span
-                                >
+                                <span class="text-secondary">Buyer</span>
                             </label>
                         </div>
                     </div>
 
+                    <!-- Source -->
                     <div class="space-y-4">
-                        <p
-                            class="text-sm font-bold uppercase tracking-widest text-secondary/60"
-                        >
-                            How Did you Hear From us:
+                        <p class="font-bold text-secondary">
+                            How did you hear from us:
                         </p>
-                        <div class="flex flex-wrap gap-6">
+                        <div class="flex flex-wrap gap-8">
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
+                                    type="checkbox"
                                     name="source"
-                                    class="accent-primary w-5 h-5"
+                                    value="referral"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Referral</span
-                                >
+                                <span class="text-secondary">Referral</span>
                             </label>
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
+                                    type="checkbox"
                                     name="source"
-                                    class="accent-primary w-5 h-5"
+                                    value="signage"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Signage</span
-                                >
+                                <span class="text-secondary">Signage</span>
                             </label>
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
+                                    type="checkbox"
                                     name="source"
-                                    class="accent-primary w-5 h-5"
+                                    value="instagram"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Instagram</span
-                                >
+                                <span class="text-secondary">Instagram</span>
                             </label>
                             <label
                                 class="flex items-center gap-3 cursor-pointer"
                             >
                                 <input
-                                    type="radio"
+                                    type="checkbox"
                                     name="source"
-                                    class="accent-primary w-5 h-5"
+                                    value="facebook"
+                                    class="w-5 h-5 border-2 border-gray-300 rounded accent-primary"
                                 />
-                                <span class="text-secondary font-medium"
-                                    >Facebook</span
-                                >
+                                <span class="text-secondary">Facebook</span>
                             </label>
                         </div>
                     </div>
 
-                    <div class="space-y-2">
-                        <label
-                            for="comments"
-                            class="text-xs font-bold uppercase tracking-widest text-secondary/40 px-2"
-                            >Comments</label
-                        >
+                    <!-- Comments -->
+                    <div>
                         <textarea
                             id="comments"
-                            rows="4"
-                            class="w-full bg-bg-light/50 border-b-2 border-primary/10 px-4 py-3 focus:border-primary outline-none transition-all rounded-lg resize-none"
+                            name="comments"
+                            rows="5"
+                            placeholder="Comments:"
+                            class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all resize-none"
                         ></textarea>
                     </div>
 
+                    <!-- Consent -->
                     <div class="flex items-start gap-3">
                         <input
                             type="checkbox"
+                            id="consent"
+                            name="consent"
                             required
-                            class="accent-primary w-5 h-5 mt-1"
+                            class="w-5 h-5 mt-0.5 border-2 border-gray-300 rounded accent-primary flex-shrink-0"
                         />
-                        <p class="text-sm text-secondary/60 leading-relaxed">
-                            I agree to allow Kentwood Home and its affiliates to
-                            contact me via phone and email. I understand I can
-                            unsubscribe at any time.
-                        </p>
+                        <label
+                            for="consent"
+                            class="text-sm text-secondary/70 leading-relaxed"
+                        >
+                            I agree to allow Kentwood Homes and its affiliates
+                            to contact me via phone and email. I understand I
+                            can unsubscribe at any time.*
+                        </label>
                     </div>
 
-                    <button
-                        type="submit"
-                        class="w-full bg-primary text-white font-bold uppercase py-6 rounded-full hover:scale-[1.01] transition-transform shadow-xl shadow-primary/30 text-lg"
-                    >
-                        Submit
-                    </button>
+                    <!-- Submit Button -->
+                    <div class="text-center pt-4">
+                        <button
+                            type="submit"
+                            class="bg-gradient-to-b from-primary to-primary/80 text-white font-bold uppercase px-16 py-4 rounded-full hover:shadow-lg hover:scale-[1.02] transition-all shadow-md text-lg tracking-wide"
+                        >
+                            Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         </section>
     </main>
 </Layout>
+
+<style>
+    /* Custom checkbox styling */
+    input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 1.25rem;
+        height: 1.25rem;
+        border: 2px solid #d1d5db;
+        border-radius: 0.25rem;
+        background: white;
+        cursor: pointer;
+        position: relative;
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: #88b04b;
+        border-color: #88b04b;
+    }
+
+    input[type="checkbox"]:checked::after {
+        content: "✓";
+        position: absolute;
+        color: white;
+        font-size: 0.875rem;
+        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
