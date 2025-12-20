@@ -72,7 +72,21 @@ const {
 			initAnimations();
 
 			// Re-initialize after Astro page transitions
-			document.addEventListener("astro:page-load", initAnimations);
+			document.addEventListener("astro:page-load", () => {
+				initAnimations();
+
+				// Ensure hash links work after page transitions
+				if (window.location.hash) {
+					const id = window.location.hash.substring(1);
+					const element = document.getElementById(id);
+					if (element) {
+						// Small delay to let initial layout/animations settle
+						setTimeout(() => {
+							element.scrollIntoView({ behavior: "smooth" });
+						}, 200);
+					}
+				}
+			});
 		</script>
 	</body>
 </html>

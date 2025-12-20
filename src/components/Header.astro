@@ -214,17 +214,37 @@ import menuIcon from "../assets/menu.svg";
             if (e.key === "Escape") closeMenu();
         });
 
-        // For drawer links, navigate immediately - menu will slide out on new page load
+        // For drawer links
         const drawerLinks = drawer?.querySelectorAll("a");
         drawerLinks?.forEach((link) => {
             link.addEventListener("click", (e) => {
                 const href = link.getAttribute("href");
-                if (href && !href.startsWith("#")) {
-                    // Set flag to trigger slide-out on next page
+                if (!href) return;
+
+                // Handle local hash links
+                if (
+                    href.startsWith("#") ||
+                    (href.startsWith(window.location.pathname) &&
+                        href.includes("#"))
+                ) {
+                    const hash = href.split("#")[1];
+                    const target = document.getElementById(hash);
+
+                    if (target) {
+                        e.preventDefault();
+                        closeMenu(() => {
+                            target.scrollIntoView({ behavior: "smooth" });
+                            history.pushState(null, "", `#${hash}`);
+                        });
+                        return;
+                    }
+                }
+
+                // For cross-page navigation
+                if (!href.startsWith("#")) {
                     sessionStorage.setItem("menuWasOpen", "true");
-                    // Let Astro handle the navigation naturally
                 } else {
-                    // For anchor links, just close menu
+                    // Fallback for same-page anchors not caught above
                     e.preventDefault();
                     closeMenu();
                 }
@@ -246,16 +266,14 @@ import menuIcon from "../assets/menu.svg";
             const drawer = document.getElementById("drawer");
             const overlay = document.getElementById("drawer-overlay");
 
+            // ALWAYS reset overflow immediately so hash scrolling can work
+            document.body.style.overflow = "";
+
             // Menu is still visually open from persist, now slide it out
             if (drawer && !drawer.classList.contains("translate-x-full")) {
-                // Small delay to ensure page is rendered
                 requestAnimationFrame(() => {
                     drawer.classList.add("translate-x-full");
                     overlay?.classList.add("opacity-0", "pointer-events-none");
-
-                    setTimeout(() => {
-                        document.body.style.overflow = "";
-                    }, 1200);
                 });
             }
         }
