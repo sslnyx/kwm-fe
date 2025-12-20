@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
+import "aos/dist/aos.css";
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.astro";
 
@@ -45,50 +46,32 @@ const {
 		<slot />
 		<Footer />
 
-		<script is:inline>
-			function initAnimations() {
-				const observerOptions = {
-					threshold: 0.1,
-					rootMargin: "0px 0px -50px 0px",
-				};
+		<script>
+			import AOS from "aos";
 
-				const observer = new IntersectionObserver((entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("active");
-							observer.unobserve(entry.target);
-						}
-					});
-				}, observerOptions);
-
-				const revealElements = document.querySelectorAll(
-					'[class*="reveal-"], .reveal',
-				);
-				revealElements.forEach((el, index) => {
-					// Add slight delay for staggered effect if multiple items exist
-					if (
-						el.parentElement &&
-						el.parentElement.classList.contains("grid")
-					) {
-						el.style.transitionDelay = `${(index % 3) * 0.1}s`;
-					}
-					observer.observe(el);
+			function initAOS() {
+				AOS.init({
+					duration: 800,
+					easing: "ease-out-cubic",
+					once: true,
+					offset: 50,
+					disable: false,
 				});
 			}
 
-			// Initialize
-			initAnimations();
+			// Initialize on first load
+			initAOS();
 
 			// Re-initialize after Astro page transitions
 			document.addEventListener("astro:page-load", () => {
-				initAnimations();
+				// Refresh AOS for new elements
+				AOS.refresh();
 
-				// Ensure hash links work after page transitions
+				// Handle hash links after page transitions
 				if (window.location.hash) {
 					const id = window.location.hash.substring(1);
 					const element = document.getElementById(id);
 					if (element) {
-						// Small delay to let initial layout/animations settle
 						setTimeout(() => {
 							element.scrollIntoView({ behavior: "smooth" });
 						}, 200);

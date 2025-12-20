@@ -30,62 +30,7 @@
     }
 }
 
-/* Reveal Animations - Outside @layer for broader compatibility */
-.reveal,
-.reveal-up,
-.reveal-down,
-.reveal-left,
-.reveal-right,
-.reveal-fade {
-    opacity: 0;
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-}
 
-.reveal-up {
-    transform: translateY(40px);
-}
-
-.reveal-down {
-    transform: translateY(-40px);
-}
-
-.reveal-left {
-    transform: translateX(40px);
-}
-
-.reveal-right {
-    transform: translateX(-40px);
-}
-
-/* Reduce animation distance on mobile to prevent overflow */
-@media (max-width: 767px) {
-    .reveal-up {
-        transform: translateY(20px);
-    }
-
-    .reveal-down {
-        transform: translateY(-20px);
-    }
-
-    .reveal-left {
-        transform: translateX(20px);
-    }
-
-    .reveal-right {
-        transform: translateX(-20px);
-    }
-}
-
-.reveal.active,
-.reveal-up.active,
-.reveal-down.active,
-.reveal-left.active,
-.reveal-right.active,
-.reveal-fade.active {
-    opacity: 1;
-    transform: translate(0, 0);
-}
 
 @keyframes fade-in {
     from {
