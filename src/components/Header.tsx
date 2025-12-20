@@ -22,24 +22,18 @@ export default function Header() {
         }, 500);
     }, []);
 
-    // Listen to Astro page transitions
+    // Listen to Astro page transitions - instantly close menu
     useEffect(() => {
-        const handlePageLoad = () => {
-            // Check if menu was open before navigation
-            if (sessionStorage.getItem('menuWasOpen') === 'true') {
-                sessionStorage.removeItem('menuWasOpen');
-                // Menu is still visually open, let it animate closed
-                document.body.style.overflow = '';
-                setIsAnimating(false);
-                setTimeout(() => {
-                    setIsOpen(false);
-                }, 500);
-            }
+        const handleBeforeSwap = () => {
+            // Instantly close menu before page swap (no animation)
+            setIsOpen(false);
+            setIsAnimating(false);
+            document.body.style.overflow = '';
         };
 
-        document.addEventListener('astro:page-load', handlePageLoad);
+        document.addEventListener('astro:before-swap', handleBeforeSwap);
         return () => {
-            document.removeEventListener('astro:page-load', handlePageLoad);
+            document.removeEventListener('astro:before-swap', handleBeforeSwap);
         };
     }, []);
 
@@ -60,42 +54,21 @@ export default function Header() {
     const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         if (!href) return;
 
-        const currentPath = window.location.pathname.replace(/\/$/, '');
-
-        // Handle local hash links (same page)
+        // Only special-case: same-page hash links need smooth scroll
         if (href.startsWith('#')) {
-            const hash = href.substring(1);
-            const target = document.getElementById(hash);
-
+            const target = document.getElementById(href.substring(1));
             if (target) {
                 e.preventDefault();
                 closeMenu(() => {
                     target.scrollIntoView({ behavior: 'smooth' });
-                    history.pushState(null, '', `#${hash}`);
+                    history.pushState(null, '', href);
                 });
             }
             return;
         }
 
-        // Handle hash links to current page
-        const linkPath = href.split('#')[0].replace(/\/$/, '');
-        if (href.includes('#') && linkPath === currentPath) {
-            const hash = href.split('#')[1];
-            const target = document.getElementById(hash);
-
-            if (target) {
-                e.preventDefault();
-                closeMenu(() => {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    history.pushState(null, '', `#${hash}`);
-                });
-            }
-            return;
-        }
-
-        // For cross-page navigation - set flag and close menu immediately
-        sessionStorage.setItem('menuWasOpen', 'true');
-        document.body.style.overflow = '';
+        // For all other navigation, let Astro handle it naturally
+        // The astro:before-swap event will instantly close the menu
     };
 
     return (
@@ -124,8 +97,8 @@ export default function Header() {
             {/* Overlay */}
             <div
                 className={`fixed hidden md:block inset-0 bg-secondary/60 backdrop-blur-md z-[60] transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen && isAnimating
-                        ? 'opacity-100 pointer-events-auto'
-                        : 'opacity-0 pointer-events-none'
+                    ? 'opacity-100 pointer-events-auto'
+                    : 'opacity-0 pointer-events-none'
                     }`}
                 onClick={() => closeMenu()}
             />
