@@ -32,6 +32,10 @@ import bop3 from "../assets/bop-3.png";
 				<Image
 					src={line_art}
 					alt="Architectural Drawing"
+					loading="eager"
+					fetchpriority="high"
+					widths={[600, 900, 1200, 1800]}
+					sizes="(max-width: 768px) 50vw, 30vw"
 					class="absolute left-[50%] md:left-[70%] h-full object-cover object-left"
 				/>
 			</div>
@@ -80,6 +84,8 @@ import bop3 from "../assets/bop-3.png";
 				<Image
 					src={mcgillRender}
 					alt="McGill Featured Project"
+					widths={[640, 960, 1280, 1920]}
+					sizes="100vw"
 					class="w-full h-full object-cover"
 				/>
 
@@ -299,6 +305,8 @@ import bop3 from "../assets/bop-3.png";
 				<Image
 					src={father}
 					alt="The Kentwood Difference - Family Living"
+					widths={[640, 960, 1280, 1920]}
+					sizes="100vw"
 					class="w-full h-auto aspect-[20/9] object-cover"
 				/>
 			</div>
