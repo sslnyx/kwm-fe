@@ -16,7 +16,7 @@ import bop3 from "../assets/bop-3.png";
 ---
 
 <Layout title="Home">
-	<main class="pt-28">
+	<main class="pt-20">
 		<!-- Hero Section -->
 		<section
 			class="relative min-h-[600px] flex items-center overflow-hidden bg-white"
@@ -165,7 +165,7 @@ import bop3 from "../assets/bop-3.png";
 					<!-- Skeena Card -->
 					<a
 						href="/projects/skeena"
-						class="relative group block transition-transform hover:scale-[1.02] duration-300 reveal"
+						class="relative group block transition-transform hover:scale-[1.02] duration-300 reveal-right"
 					>
 						<div
 							class="bg-[#F9FBF1] p-12 shadow-2xl relative z-10 h-full"
@@ -214,7 +214,7 @@ import bop3 from "../assets/bop-3.png";
 					<!-- Oakridge Card -->
 					<a
 						href="/projects/oakridge"
-						class="relative group block transition-transform hover:scale-[1.02] duration-300 reveal"
+						class="relative group block transition-transform hover:scale-[1.02] duration-300 reveal-left"
 					>
 						<div
 							class="bg-[#F9FBF1] p-12 shadow-2xl relative z-10 h-full"
@@ -305,9 +305,9 @@ import bop3 from "../assets/bop-3.png";
 
 			<!-- Descriptive Content -->
 			<div class="bg-bg-light py-24 mt-0">
-				<div class="max-w-4xl mx-auto px-4 reveal">
+				<div class="max-w-3xl mx-auto px-4 reveal-up">
 					<p
-						class="text-lg text-secondary font-medium leading-loose text-center"
+						class="text-base text-secondary font-medium leading-loose text-center"
 					>
 						Crafted with net-zero construction and outfitted with
 						solar panels, our multiplex homes set a new benchmark
@@ -336,21 +336,27 @@ import bop3 from "../assets/bop-3.png";
 				</div>
 
 				<div class="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto mb-20">
-					<div class="aspect-square overflow-hidden shadow-xl reveal">
+					<div
+						class="aspect-square overflow-hidden shadow-xl reveal-up"
+					>
 						<Image
 							src={bop1}
 							alt="Custom Home Exterior"
 							class="w-full h-full object-cover"
 						/>
 					</div>
-					<div class="aspect-square overflow-hidden shadow-xl reveal">
+					<div
+						class="aspect-square overflow-hidden shadow-xl reveal-up"
+					>
 						<Image
 							src={bop2}
 							alt="Construction Planning"
 							class="w-full h-full object-cover"
 						/>
 					</div>
-					<div class="aspect-square overflow-hidden shadow-xl reveal">
+					<div
+						class="aspect-square overflow-hidden shadow-xl reveal-up"
+					>
 						<Image
 							src={bop3}
 							alt="Modern Interior"

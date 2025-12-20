@@ -24,17 +24,42 @@
     }
 }
 
-@layer utilities {
-    .reveal {
-        opacity: 0;
-        transform: translateY(10px);
-        transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+/* Reveal Animations - Outside @layer for broader compatibility */
+.reveal,
+.reveal-up,
+.reveal-down,
+.reveal-left,
+.reveal-right,
+.reveal-fade {
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
 
-    .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.reveal-up {
+    transform: translateY(40px);
+}
+
+.reveal-down {
+    transform: translateY(-40px);
+}
+
+.reveal-left {
+    transform: translateX(40px);
+}
+
+.reveal-right {
+    transform: translateX(-40px);
+}
+
+.reveal.active,
+.reveal-up.active,
+.reveal-down.active,
+.reveal-left.active,
+.reveal-right.active,
+.reveal-fade.active {
+    opacity: 1;
+    transform: translate(0, 0);
 }
 
 @keyframes fade-in {

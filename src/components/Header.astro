@@ -7,18 +7,18 @@ import menuIcon from "../assets/menu.svg";
 <header
     class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-100"
 >
-    <div class="container h-28 flex items-center justify-between">
+    <div class="container h-20 flex items-center justify-between">
         <a href="/" class="flex items-center">
             <Image
                 src={logo}
                 alt="Kentwood Multiplex Logo"
-                class="h-12 w-auto"
+                class="h-[40px] w-auto p-2 box-content -mx-2"
             />
         </a>
 
         <button
             id="menu-toggle"
-            class="hover:opacity-80 transition-opacity p-2"
+            class="hover:opacity-80 transition-opacity p-2 cursor-pointer"
             aria-label="Open Menu"
         >
             <Image src={menuIcon} alt="Menu" class="w-10 h-10" />
@@ -26,16 +26,17 @@ import menuIcon from "../assets/menu.svg";
     </div>
 </header>
 
-<!-- Premium Drawer Menu Overlay -->
 <div
     id="drawer-overlay"
-    class="fixed inset-0 bg-secondary/60 backdrop-blur-md z-[60] opacity-0 pointer-events-none transition-opacity duration-500"
+    class="fixed inset-0 bg-secondary/60 backdrop-blur-md z-[60] opacity-0 pointer-events-none transition-opacity duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)]"
+    transition:persist
 >
 </div>
 
 <div
     id="drawer"
-    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16, 1, 0.3, 1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)]"
+    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full opacity-100 transition-all duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)]"
+    transition:persist
 >
     <div class="h-full flex flex-col p-12 overflow-y-auto">
         <!-- Drawer Header -->
@@ -166,7 +167,7 @@ import menuIcon from "../assets/menu.svg";
 
         // Reset menu state on page load
         if (drawer) {
-            drawer.classList.add("translate-x-full");
+            drawer.classList.add("translate-x-full", "opacity-0");
         }
         if (overlay) {
             overlay.classList.add("opacity-0", "pointer-events-none");
@@ -177,7 +178,7 @@ import menuIcon from "../assets/menu.svg";
 
         function openMenu() {
             const scrollbarWidth = getScrollbarWidth();
-            drawer?.classList.remove("translate-x-full");
+            drawer?.classList.remove("translate-x-full", "opacity-0");
             overlay?.classList.remove("opacity-0", "pointer-events-none");
 
             if (scrollbarWidth > 0) {
@@ -187,16 +188,26 @@ import menuIcon from "../assets/menu.svg";
             body.style.overflow = "hidden";
         }
 
-        function closeMenu() {
-            drawer?.classList.add("translate-x-full");
+        function closeMenu(callback) {
+            // Quick fade-out (150ms)
+            if (drawer) drawer.style.transition = "opacity 150ms ease-out";
+            if (overlay) overlay.style.transition = "opacity 150ms ease-out";
+
+            drawer?.classList.add("opacity-0");
             overlay?.classList.add("opacity-0", "pointer-events-none");
 
-            // Delay resetting overflow and padding until animation is partially done or just after
             setTimeout(() => {
                 body.style.overflow = "";
                 body.style.paddingRight = "";
                 if (header) header.style.paddingRight = "";
-            }, 300);
+                // Reset drawer position and transition for next open
+                if (drawer) {
+                    drawer.classList.add("translate-x-full");
+                    drawer.style.transition = "";
+                }
+                if (overlay) overlay.style.transition = "";
+                if (callback) callback();
+            }, 150);
         }
 
         // Remove old listeners by cloning elements and updating references
@@ -226,28 +237,53 @@ import menuIcon from "../assets/menu.svg";
             if (e.key === "Escape") closeMenu();
         });
 
-        // Close drawer when clicking any link
+        // For drawer links, navigate immediately - menu will slide out on new page load
         const drawerLinks = drawer?.querySelectorAll("a");
         drawerLinks?.forEach((link) => {
-            link.addEventListener("click", closeMenu);
+            link.addEventListener("click", (e) => {
+                const href = link.getAttribute("href");
+                if (href && !href.startsWith("#")) {
+                    // Set flag to trigger slide-out on next page
+                    sessionStorage.setItem("menuWasOpen", "true");
+                    // Let Astro handle the navigation naturally
+                } else {
+                    // For anchor links, just close menu
+                    e.preventDefault();
+                    closeMenu();
+                }
+            });
         });
     }
 
     // Initialize on first load
     document.addEventListener("DOMContentLoaded", initMenu);
 
-    // Re-initialize after Astro page transitions
-    document.addEventListener("astro:page-load", initMenu);
+    // Re-initialize after Astro page transitions and handle slide-out
+    document.addEventListener("astro:page-load", () => {
+        initMenu();
 
-    // Also close menu before navigation starts
-    document.addEventListener("astro:before-preparation", () => {
-        const drawer = document.getElementById("drawer");
-        const overlay = document.getElementById("drawer-overlay");
-        const header = document.querySelector("header");
-        drawer?.classList.add("translate-x-full");
-        overlay?.classList.add("opacity-0", "pointer-events-none");
-        document.body.style.overflow = "";
-        document.body.style.paddingRight = "";
-        if (header) header.style.paddingRight = "";
+        // Check if menu was open before navigation
+        if (sessionStorage.getItem("menuWasOpen") === "true") {
+            sessionStorage.removeItem("menuWasOpen");
+
+            const drawer = document.getElementById("drawer");
+            const overlay = document.getElementById("drawer-overlay");
+            const header = document.querySelector("header");
+
+            // Menu is still visually open from persist, now slide it out
+            if (drawer && !drawer.classList.contains("translate-x-full")) {
+                // Small delay to ensure page is rendered
+                requestAnimationFrame(() => {
+                    drawer.classList.add("translate-x-full");
+                    overlay?.classList.add("opacity-0", "pointer-events-none");
+
+                    setTimeout(() => {
+                        document.body.style.overflow = "";
+                        document.body.style.paddingRight = "";
+                        if (header) header.style.paddingRight = "";
+                    }, 1200);
+                });
+            }
+        }
     });
 </script>
