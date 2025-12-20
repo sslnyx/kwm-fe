@@ -2,7 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import "aos/dist/aos.css";
-import Header from "../components/Header.tsx";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 interface Props {
@@ -42,7 +42,7 @@ const {
 		<ClientRouter />
 	</head>
 	<body class="bg-bg-light">
-		<Header client:load transition:persist />
+		<Header />
 		<slot />
 		<Footer />
 

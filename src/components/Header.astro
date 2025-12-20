@@ -1,0 +1,229 @@
+---
+import logoSrc from "../assets/KWM-Logo.svg";
+import menuIconSrc from "../assets/menu.svg";
+---
+
+{/* Fixed Header */}
+<header
+    class="fixed top-0 left-0 w-full z-50 bg-white border-b border-gray-100"
+>
+    <div class="container h-20 flex items-center justify-between">
+        <a href="/" class="flex items-center">
+            <img
+                src={logoSrc.src}
+                alt="Kentwood Multiplex Logo"
+                class="h-[40px] w-auto p-2 box-content -mx-2"
+            />
+        </a>
+
+        <button
+            id="menu-open-btn"
+            class="hover:opacity-80 transition-opacity p-2 cursor-pointer"
+            aria-label="Open Menu"
+        >
+            <img src={menuIconSrc.src} alt="Menu" class="w-10 h-10" />
+        </button>
+    </div>
+</header>
+
+{/* Overlay */}
+<div
+    id="menu-overlay"
+    class="fixed hidden md:block inset-0 bg-secondary/60 backdrop-blur-md z-[60] transition-opacity duration-300 ease-out opacity-0 pointer-events-none"
+>
+</div>
+
+{/* Drawer */}
+<div
+    id="menu-drawer"
+    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden transition-transform duration-500 ease-out translate-x-full"
+>
+    <div class="h-full flex flex-col p-12 overflow-y-auto scrollbar-hide">
+        {/* Drawer Header */}
+        <div class="flex justify-between items-center mb-16">
+            <img src={logoSrc.src} alt="Kentwood Logo" class="h-8 w-auto" />
+            <button
+                id="menu-close-btn"
+                class="text-secondary hover:text-primary transition-colors p-2"
+                aria-label="Close Menu"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        {/* Menu Content */}
+        <nav class="flex-grow space-y-12">
+            {/* Project Categories */}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3
+                        class="text-xs font-black uppercase tracking-[0.3em] text-secondary/40 border-b border-gray-100 pb-2"
+                    >
+                        Featured Projects
+                    </h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a
+                                href="/projects/mcgill"
+                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
+                            >
+                                McGill
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6">
+                    <h3
+                        class="text-xs font-black uppercase tracking-[0.3em] text-secondary/40 border-b border-gray-100 pb-2"
+                    >
+                        Upcoming Projects
+                    </h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a
+                                href="/projects/oakridge"
+                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
+                            >
+                                Oak
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/projects/skeena"
+                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
+                            >
+                                Skeena
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {/* Primary Links */}
+            <div class="space-y-6 pt-12 border-t border-gray-100">
+                <ul class="space-y-6">
+                    <li>
+                        <a
+                            href="/about"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic nav-link"
+                        >
+                            About
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/faq"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic nav-link"
+                        >
+                            FAQs
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/contact"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic nav-link"
+                        >
+                            Get In Touch
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        {/* Footer */}
+        <div class="mt-auto pt-12">
+            <a
+                href="/register"
+                class="w-full bg-primary text-white py-6 rounded-full text-center font-black uppercase tracking-widest text-lg hover:scale-[1.02] active:scale-95 transition-all shadow-xl block shadow-primary/20 nav-link"
+            >
+                Register
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setupMenu() {
+        const openBtn = document.getElementById("menu-open-btn");
+        const closeBtn = document.getElementById("menu-close-btn");
+        const overlay = document.getElementById("menu-overlay");
+        const drawer = document.getElementById("menu-drawer");
+        const links = document.querySelectorAll(".nav-link");
+
+        function openMenu() {
+            overlay?.classList.remove("opacity-0", "pointer-events-none");
+            overlay?.classList.add("opacity-100", "pointer-events-auto");
+            drawer?.classList.remove("translate-x-full");
+            drawer?.classList.add("translate-x-0");
+            // document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu(callback) {
+            overlay?.classList.add("opacity-0", "pointer-events-none");
+            overlay?.classList.remove("opacity-100", "pointer-events-auto");
+            drawer?.classList.add("translate-x-full");
+            drawer?.classList.remove("translate-x-0");
+            document.body.style.overflow = "";
+
+            if (callback && typeof callback === "function") {
+                setTimeout(callback, 300); // Wait for transition
+            }
+        }
+
+        openBtn?.addEventListener("click", openMenu);
+        closeBtn?.addEventListener("click", () => closeMenu(null));
+        overlay?.addEventListener("click", () => closeMenu(null));
+
+        // Handle Escape key
+        document.addEventListener("keydown", (e) => {
+            if (
+                e.key === "Escape" &&
+                drawer?.classList.contains("translate-x-0")
+            ) {
+                closeMenu(null);
+            }
+        });
+
+        // Close menu on link click
+        links.forEach((link) => {
+            link.addEventListener("click", (e) => {
+                const href = link.getAttribute("href");
+
+                // If same-page hash link, handle smooth scroll
+                if (href && href.startsWith("#")) {
+                    const target = document.getElementById(href.substring(1));
+                    if (target) {
+                        e.preventDefault();
+                        closeMenu(() => {
+                            target.scrollIntoView({ behavior: "smooth" });
+                            history.pushState(null, "", href);
+                        });
+                    }
+                }
+                // Regular links will now navigate directly without triggering closeMenu animation
+            });
+        });
+
+        // Ensure body scrolling is restored on navigation
+        document.addEventListener("astro:before-swap", () => {
+            document.body.style.overflow = "";
+        });
+    }
+
+    // Initialize on every page load (initial + transitions)
+    document.addEventListener("astro:page-load", setupMenu);
+</script>
