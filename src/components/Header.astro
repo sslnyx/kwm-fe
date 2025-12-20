@@ -35,7 +35,7 @@ import menuIcon from "../assets/menu.svg";
 
 <div
     id="drawer"
-    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full opacity-100 transition-all duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)]"
+    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full transition-transform duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)]"
     transition:persist
 >
     <div class="h-full flex flex-col p-12 overflow-y-auto">
@@ -158,56 +158,33 @@ import menuIcon from "../assets/menu.svg";
         let menuClose = document.getElementById("menu-close");
         let drawer = document.getElementById("drawer");
         let overlay = document.getElementById("drawer-overlay");
-        const header = document.querySelector("header");
         const body = document.body;
-
-        function getScrollbarWidth() {
-            return window.innerWidth - document.documentElement.clientWidth;
-        }
 
         // Reset menu state on page load
         if (drawer) {
-            drawer.classList.add("translate-x-full", "opacity-0");
+            drawer.classList.add("translate-x-full");
         }
         if (overlay) {
             overlay.classList.add("opacity-0", "pointer-events-none");
         }
         body.style.overflow = "";
-        body.style.paddingRight = "";
-        if (header) header.style.paddingRight = "";
 
         function openMenu() {
-            const scrollbarWidth = getScrollbarWidth();
-            drawer?.classList.remove("translate-x-full", "opacity-0");
+            drawer?.classList.remove("translate-x-full");
             overlay?.classList.remove("opacity-0", "pointer-events-none");
-
-            if (scrollbarWidth > 0) {
-                body.style.paddingRight = `${scrollbarWidth}px`;
-                if (header) header.style.paddingRight = `${scrollbarWidth}px`;
-            }
             body.style.overflow = "hidden";
         }
 
         function closeMenu(callback) {
-            // Quick fade-out (150ms)
-            if (drawer) drawer.style.transition = "opacity 150ms ease-out";
-            if (overlay) overlay.style.transition = "opacity 150ms ease-out";
-
-            drawer?.classList.add("opacity-0");
+            // Slide out the drawer
+            drawer?.classList.add("translate-x-full");
             overlay?.classList.add("opacity-0", "pointer-events-none");
 
+            // Wait for slide animation to complete
             setTimeout(() => {
                 body.style.overflow = "";
-                body.style.paddingRight = "";
-                if (header) header.style.paddingRight = "";
-                // Reset drawer position and transition for next open
-                if (drawer) {
-                    drawer.classList.add("translate-x-full");
-                    drawer.style.transition = "";
-                }
-                if (overlay) overlay.style.transition = "";
                 if (callback) callback();
-            }, 150);
+            }, 500); // Match a reasonable close duration
         }
 
         // Remove old listeners by cloning elements and updating references
@@ -268,7 +245,6 @@ import menuIcon from "../assets/menu.svg";
 
             const drawer = document.getElementById("drawer");
             const overlay = document.getElementById("drawer-overlay");
-            const header = document.querySelector("header");
 
             // Menu is still visually open from persist, now slide it out
             if (drawer && !drawer.classList.contains("translate-x-full")) {
@@ -279,8 +255,6 @@ import menuIcon from "../assets/menu.svg";
 
                     setTimeout(() => {
                         document.body.style.overflow = "";
-                        document.body.style.paddingRight = "";
-                        if (header) header.style.paddingRight = "";
                     }, 1200);
                 });
             }

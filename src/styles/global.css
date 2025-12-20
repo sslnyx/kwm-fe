@@ -11,6 +11,10 @@
 }
 
 @layer base {
+    html {
+        overflow-y: scroll;
+    }
+
     body {
         @apply bg-bg-light text-secondary font-body;
     }
