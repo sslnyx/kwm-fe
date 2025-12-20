@@ -4,30 +4,22 @@ import menuIconSrc from '../assets/menu.svg';
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
-    const [isAnimating, setIsAnimating] = useState(false);
 
     const openMenu = useCallback(() => {
         setIsOpen(true);
-        setIsAnimating(true);
         document.body.style.overflow = 'hidden';
     }, []);
 
     const closeMenu = useCallback((callback?: () => void) => {
-        setIsAnimating(false);
-        // Wait for animation to complete
-        setTimeout(() => {
-            setIsOpen(false);
-            document.body.style.overflow = '';
-            if (callback) callback();
-        }, 500);
+        setIsOpen(false);
+        document.body.style.overflow = '';
+        if (callback) callback();
     }, []);
 
     // Listen to Astro page transitions - instantly close menu
     useEffect(() => {
         const handleBeforeSwap = () => {
-            // Instantly close menu before page swap (no animation)
             setIsOpen(false);
-            setIsAnimating(false);
             document.body.style.overflow = '';
         };
 
@@ -96,7 +88,7 @@ export default function Header() {
 
             {/* Overlay */}
             <div
-                className={`fixed hidden md:block inset-0 bg-secondary/60 backdrop-blur-md z-[60] transition-opacity duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen && isAnimating
+                className={`fixed hidden md:block inset-0 bg-secondary/60 backdrop-blur-md z-[60] ${isOpen
                     ? 'opacity-100 pointer-events-auto'
                     : 'opacity-0 pointer-events-none'
                     }`}
@@ -105,7 +97,7 @@ export default function Header() {
 
             {/* Drawer */}
             <div
-                className={`fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden ${isOpen && isAnimating ? 'translate-x-0' : 'translate-x-full'
+                className={`fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
                     }`}
             >
                 <div className="h-full flex flex-col p-12 overflow-y-auto scrollbar-hide">
