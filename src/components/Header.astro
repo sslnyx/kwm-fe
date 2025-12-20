@@ -209,24 +209,44 @@ import menuIcon from "../assets/menu.svg";
             overlay.addEventListener("click", closeMenu);
         }
 
-        // Close on escape key
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") closeMenu();
-        });
+        // Close on escape key - use a named function to avoid duplicates
+        if (!window._menuEscapeListenerAdded) {
+            window._menuEscapeListenerAdded = true;
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeMenu();
+            });
+        }
 
-        // For drawer links
+        // For drawer links - clone each link to remove old event listeners
         const drawerLinks = drawer?.querySelectorAll("a");
         drawerLinks?.forEach((link) => {
-            link.addEventListener("click", (e) => {
-                const href = link.getAttribute("href");
+            // Clone the link to remove any existing event listeners
+            const newLink = link.cloneNode(true);
+            link.parentNode?.replaceChild(newLink, link);
+
+            newLink.addEventListener("click", (e) => {
+                const href = newLink.getAttribute("href");
                 if (!href) return;
 
-                // Handle local hash links
-                if (
-                    href.startsWith("#") ||
-                    (href.startsWith(window.location.pathname) &&
-                        href.includes("#"))
-                ) {
+                // Handle local hash links (same page)
+                if (href.startsWith("#")) {
+                    const hash = href.substring(1);
+                    const target = document.getElementById(hash);
+
+                    if (target) {
+                        e.preventDefault();
+                        closeMenu(() => {
+                            target.scrollIntoView({ behavior: "smooth" });
+                            history.pushState(null, "", `#${hash}`);
+                        });
+                    }
+                    return;
+                }
+
+                // Handle hash links to current page (e.g., /about#section when on /about)
+                const currentPath = window.location.pathname.replace(/\/$/, "");
+                const linkPath = href.split("#")[0].replace(/\/$/, "");
+                if (href.includes("#") && linkPath === currentPath) {
                     const hash = href.split("#")[1];
                     const target = document.getElementById(hash);
 
@@ -236,18 +256,16 @@ import menuIcon from "../assets/menu.svg";
                             target.scrollIntoView({ behavior: "smooth" });
                             history.pushState(null, "", `#${hash}`);
                         });
-                        return;
                     }
+                    return;
                 }
 
-                // For cross-page navigation
-                if (!href.startsWith("#")) {
-                    sessionStorage.setItem("menuWasOpen", "true");
-                } else {
-                    // Fallback for same-page anchors not caught above
-                    e.preventDefault();
-                    closeMenu();
-                }
+                // For cross-page navigation - let it proceed naturally
+                // Set flag so we can animate the menu closed after navigation
+                sessionStorage.setItem("menuWasOpen", "true");
+
+                // Close the menu immediately (visually) before navigation starts
+                body.style.overflow = "";
             });
         });
     }
