@@ -12,11 +12,13 @@
 
 @layer base {
     html {
-        overflow-y: scroll;
+        overflow-x: hidden;
     }
 
     body {
         @apply bg-bg-light text-secondary font-body;
+        overflow-x: hidden;
+        min-height: 100vh;
     }
 
     .container {
@@ -56,6 +58,25 @@
     transform: translateX(-40px);
 }
 
+/* Reduce animation distance on mobile to prevent overflow */
+@media (max-width: 767px) {
+    .reveal-up {
+        transform: translateY(20px);
+    }
+
+    .reveal-down {
+        transform: translateY(-20px);
+    }
+
+    .reveal-left {
+        transform: translateX(20px);
+    }
+
+    .reveal-right {
+        transform: translateX(-20px);
+    }
+}
+
 .reveal.active,
 .reveal-up.active,
 .reveal-down.active,
@@ -80,4 +101,17 @@
 
 .animate-fade-in {
     animation: fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
 }

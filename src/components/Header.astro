@@ -35,10 +35,10 @@ import menuIcon from "../assets/menu.svg";
 
 <div
     id="drawer"
-    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full transition-transform duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)]"
+    class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-white z-[70] translate-x-full transition-transform duration-1200 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden"
     transition:persist
 >
-    <div class="h-full flex flex-col p-12 overflow-y-auto">
+    <div class="h-full flex flex-col p-12 overflow-y-auto scrollbar-hide">
         <!-- Drawer Header -->
         <div class="flex justify-between items-center mb-16">
             <Image src={logo} alt="Kentwood Logo" class="h-8 w-auto" />
