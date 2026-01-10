@@ -1,6 +1,10 @@
 ---
 import logoSrc from "../assets/KWM-Logo.svg";
 import menuIconSrc from "../assets/menu.svg";
+import { getFeaturedProjects, getUpcomingProjects } from "../data/projects";
+
+const featuredProjects = getFeaturedProjects();
+const upcomingProjects = getUpcomingProjects();
 ---
 
 {/* Fixed Header */}
@@ -75,14 +79,18 @@ import menuIconSrc from "../assets/menu.svg";
                         Featured Projects
                     </h3>
                     <ul class="space-y-4">
-                        <li>
-                            <a
-                                href="/projects/mcgill"
-                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
-                            >
-                                McGill
-                            </a>
-                        </li>
+                        {
+                            featuredProjects.map((project) => (
+                                <li>
+                                    <a
+                                        href={`/projects/${project.slug}`}
+                                        class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
+                                    >
+                                        {project.name}
+                                    </a>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
 
@@ -93,22 +101,18 @@ import menuIconSrc from "../assets/menu.svg";
                         Upcoming Projects
                     </h3>
                     <ul class="space-y-4">
-                        <li>
-                            <a
-                                href="/projects/oakridge"
-                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
-                            >
-                                Oak
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/projects/skeena"
-                                class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
-                            >
-                                Skeena
-                            </a>
-                        </li>
+                        {
+                            upcomingProjects.map((project) => (
+                                <li>
+                                    <a
+                                        href={`/projects/${project.slug}`}
+                                        class="text-2xl font-bold text-secondary hover:text-primary transition-colors block leading-tight nav-link"
+                                    >
+                                        {project.name}
+                                    </a>
+                                </li>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
@@ -119,7 +123,7 @@ import menuIconSrc from "../assets/menu.svg";
                     <li>
                         <a
                             href="/about"
-                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic nav-link"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter nav-link"
                         >
                             About
                         </a>
@@ -127,7 +131,7 @@ import menuIconSrc from "../assets/menu.svg";
                     <li>
                         <a
                             href="/faq"
-                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic nav-link"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter nav-link"
                         >
                             FAQs
                         </a>
@@ -135,7 +139,7 @@ import menuIconSrc from "../assets/menu.svg";
                     <li>
                         <a
                             href="/contact"
-                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter italic nav-link"
+                            class="text-4xl font-black text-secondary hover:text-primary transition-colors uppercase tracking-tighter nav-link"
                         >
                             Get In Touch
                         </a>
@@ -172,7 +176,7 @@ import menuIconSrc from "../assets/menu.svg";
             // document.body.style.overflow = "hidden";
         }
 
-        function closeMenu(callback) {
+        function closeMenu(callback: (() => void) | null) {
             overlay?.classList.add("opacity-0", "pointer-events-none");
             overlay?.classList.remove("opacity-100", "pointer-events-auto");
             drawer?.classList.add("translate-x-full");

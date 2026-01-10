@@ -1,11 +1,14 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import { getProjectBySlug } from "../../data/projects";
 
 import mcgillRender from "../../assets/mcgill-render.png";
+
+const project = getProjectBySlug("mcgill");
 ---
 
-<Layout title="McGill - Kentwood Homes">
+<Layout title={`${project?.name} - Kentwood Homes`}>
     <main class="pt-20">
         <!-- Full-Width Hero Image -->
         <section class="relative">
@@ -29,10 +32,10 @@ import mcgillRender from "../../assets/mcgill-render.png";
                         <h1
                             class="text-3xl md:text-4xl font-bold text-secondary"
                         >
-                            McGill
+                            {project?.name}
                         </h1>
                         <span class="text-secondary/60 text-lg">
-                            | 2905 McGILL ST. Vancouver
+                            | {project?.location}
                         </span>
                     </div>
                     <a
@@ -45,7 +48,7 @@ import mcgillRender from "../../assets/mcgill-render.png";
 
                 <!-- Subtitle -->
                 <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8">
-                    3 Bedroom, 2 Bath + Flex
+                    {project?.units}
                 </h2>
 
                 <!-- Content Grid -->

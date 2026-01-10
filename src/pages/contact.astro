@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import { company } from "../data/company";
 
 import contactImg from "../assets/git-1.png";
 ---
@@ -10,11 +11,11 @@ import contactImg from "../assets/git-1.png";
         <!-- Main Section Container with partitioned background -->
         <section class="min-h-screen bg-[#F3F4F6] relative">
             <!-- Desktop View: Side-by-Side Flex with Overlap -->
-            <div class="hidden lg:flex min-h-[90vh]">
+            <div class="hidden lg:flex">
                 <!-- Left Content: Image + Info (Stacked) -->
                 <div class="w-full">
                     <!-- Image with Title -->
-                    <div class="h-[65vh] relative">
+                    <div class="h-[65vh] lg:min-h-[500px] relative">
                         <Image
                             src={contactImg}
                             alt="Kentwood Multiplex Architecture"
@@ -28,13 +29,12 @@ import contactImg from "../assets/git-1.png";
                         >
                             <div class="container">
                                 <h1
-                                    class="text-7xl xl:text-8xl font-black leading-none tracking-tighter data-aos="fade-right""
+                                    class="text-7xl xl:text-8xl font-black leading-none tracking-tighter"
+                                    data-aos="fade-right"
                                 >
                                     <span class="text-white">Get in </span>
                                     <br />
-                                    <span class="text-primary italic"
-                                        >Touch</span
-                                    >
+                                    <span class="text-primary">Touch</span>
                                 </h1>
                             </div>
                         </div>
@@ -42,7 +42,8 @@ import contactImg from "../assets/git-1.png";
 
                     <!-- Contact Info (Bottom Left) -->
                     <div
-                        class="flex-grow bg-[#F3F4F6] px-16 xl:px-24 py-16 data-aos="fade-up""
+                        class="flex-grow bg-[#F3F4F6] px-16 xl:px-24 py-16"
+                        data-aos="fade-up"
                     >
                         <div class="container">
                             <div class="space-y-6">
@@ -52,10 +53,10 @@ import contactImg from "../assets/git-1.png";
                                 <div
                                     class="text-lg text-secondary/80 space-y-1 font-medium leading-relaxed"
                                 >
-                                    <p>1030 - 8477 Bridgeport Road</p>
-                                    <p>Richmond, BC V6X 0S8 Canada</p>
-                                    <p class="pt-4">info@kentwoodhomes.ca</p>
-                                    <p>672.335.0088</p>
+                                    <p>{company.address.line1}</p>
+                                    <p>{company.address.line2}</p>
+                                    <p class="pt-4">{company.email}</p>
+                                    <p>{company.phone}</p>
                                 </div>
                             </div>
                         </div>
@@ -64,11 +65,12 @@ import contactImg from "../assets/git-1.png";
 
                 <!-- Right Content: Form Card Floating -->
                 <div
-                    class="absolute right-0 w-1/2 h-full flex items-center justify-center"
+                    class="absolute right-0 w-1/2 h-full flex items-start justify-center py-8"
                 >
                     <!-- The Card -->
                     <div
-                        class="w-full max-w-lg bg-white p-12 xl:p-14 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] z-20 relative -mt-32 data-aos="fade-left""
+                        class="w-full max-w-lg bg-white p-12 xl:p-14 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] z-20 relative my-auto"
+                        data-aos="fade-left"
                     >
                         <form class="space-y-6">
                             <div class="space-y-1.5">
@@ -125,7 +127,7 @@ import contactImg from "../assets/git-1.png";
                                 <textarea
                                     id="message"
                                     name="message"
-                                    rows="9"
+                                    rows="5"
                                     class="w-full border border-gray-300 rounded-sm px-4 py-3 outline-none focus:border-primary transition-colors resize-none"
                                 ></textarea>
                             </div>
@@ -140,10 +142,12 @@ import contactImg from "../assets/git-1.png";
                     </div>
 
                     <!-- Secondary background area to complete the partitioned look -->
-                    <div class="absolute inset-0 z-0 h-[65vh] bg-transparent">
+                    <div
+                        class="absolute inset-0 z-[-1] h-[65vh] bg-transparent"
+                    >
                     </div>
                     <div
-                        class="absolute bottom-0 left-0 right-0 z-0 h-[calc(100%-65vh)] bg-[#F3F4F6]"
+                        class="absolute bottom-0 left-0 right-0 z-[-1] h-[calc(100%-65vh)] bg-[#F3F4F6]"
                     >
                     </div>
                 </div>
@@ -163,7 +167,7 @@ import contactImg from "../assets/git-1.png";
                     >
                         <h1 class="text-5xl font-black text-white leading-none">
                             Get in <br />
-                            <span class="text-primary italic">Touch</span>
+                            <span class="text-primary">Touch</span>
                         </h1>
                     </div>
                 </div>
@@ -226,10 +230,10 @@ import contactImg from "../assets/git-1.png";
                         Kentwood Homes | Multiplex
                     </h2>
                     <div class="text-secondary/70 space-y-1 font-medium">
-                        <p>1030 - 8477 Bridgeport Road</p>
-                        <p>Richmond, BC V6X 0S8 Canada</p>
-                        <p class="pt-2 italic">info@kentwoodhomes.ca</p>
-                        <p>672.335.0088</p>
+                        <p>{company.address.line1}</p>
+                        <p>{company.address.line2}</p>
+                        <p class="pt-2">{company.email}</p>
+                        <p>{company.phone}</p>
                     </div>
                 </div>
             </div>

@@ -7,9 +7,9 @@ import Layout from "../layouts/Layout.astro";
         <section class="py-16 bg-white min-h-screen">
             <div class="container max-w-2xl">
                 <!-- Header -->
-                <div class="mb-10 data-aos="fade-up"">
+                <div class="mb-10" data-aos="fade-up">
                     <h1
-                        class="text-4xl md:text-5xl font-bold text-primary italic mb-4"
+                        class="text-4xl md:text-5xl font-bold text-primary mb-4"
                     >
                         Register
                     </h1>
@@ -21,7 +21,7 @@ import Layout from "../layouts/Layout.astro";
 
                 <form class="space-y-8">
                     <!-- Name Fields -->
-                    <div class="grid md:grid-cols-2 gap-6 data-aos="fade-up"">
+                    <div class="grid md:grid-cols-2 gap-6" data-aos="fade-up">
                         <div>
                             <input
                                 type="text"
@@ -45,7 +45,7 @@ import Layout from "../layouts/Layout.astro";
                     </div>
 
                     <!-- Contact Fields -->
-                    <div class="grid md:grid-cols-2 gap-6 data-aos="fade-up"">
+                    <div class="grid md:grid-cols-2 gap-6" data-aos="fade-up">
                         <div>
                             <input
                                 type="email"
@@ -68,7 +68,7 @@ import Layout from "../layouts/Layout.astro";
                     </div>
 
                     <!-- Project Interest -->
-                    <div class="space-y-4 data-aos="fade-up"">
+                    <div class="space-y-4" data-aos="fade-up">
                         <p class="font-bold text-secondary">
                             Which project are you interested in:
                         </p>
@@ -118,7 +118,7 @@ import Layout from "../layouts/Layout.astro";
                     </div>
 
                     <!-- Role -->
-                    <div class="space-y-4 data-aos="fade-up"">
+                    <div class="space-y-4" data-aos="fade-up">
                         <p class="font-bold text-secondary">Are you a:</p>
                         <div class="flex flex-wrap gap-8">
                             <label
@@ -169,7 +169,7 @@ import Layout from "../layouts/Layout.astro";
                     </div>
 
                     <!-- Source -->
-                    <div class="space-y-4 data-aos="fade-up"">
+                    <div class="space-y-4" data-aos="fade-up">
                         <p class="font-bold text-secondary">
                             How did you hear from us:
                         </p>
@@ -366,7 +366,7 @@ import Layout from "../layouts/Layout.astro";
                         container.innerHTML = `
                             <div class="text-center py-16">
                                 <div class="text-6xl mb-6 text-primary">✓</div>
-                                <h2 class="text-3xl font-bold text-primary italic mb-4">Thank You!</h2>
+                                <h2 class="text-3xl font-bold text-primary mb-4">Thank You!</h2>
                                 <p class="text-secondary/70 text-lg max-w-md mx-auto">${result.message}</p>
                                 <a href="/" class="inline-block mt-8 bg-primary text-white font-bold px-8 py-3 rounded-full hover:bg-primary/90 transition-all">
                                     Back to Home
