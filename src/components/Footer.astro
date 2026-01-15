@@ -109,37 +109,39 @@ import { company } from "../data/company";
                     </ul>
                 </div>
 
-                <div class="flex">
-                    <a
-                        href="/faq"
-                        class="font-black uppercase tracking-widest text-sm text-white hover:text-primary transition-colors whitespace-nowrap"
-                        >FAQs</a
-                    >
-                </div>
+                <div class="flex flex-col md:flex-row gap-4 md:gap-0">
+                    <div class="flex">
+                        <a
+                            href="/faq"
+                            class="font-black uppercase tracking-widest text-sm text-white hover:text-primary transition-colors whitespace-nowrap"
+                            >FAQs</a
+                        >
+                    </div>
 
-                <div class="flex">
-                    <a
-                        href="/contact"
-                        class="font-black uppercase tracking-widest text-sm text-white hover:text-primary transition-colors whitespace-nowrap"
-                        >Contact</a
-                    >
-                </div>
+                    <div class="flex md:ml-6">
+                        <a
+                            href="/contact"
+                            class="font-black uppercase tracking-widest text-sm text-white hover:text-primary transition-colors whitespace-nowrap"
+                            >Contact</a
+                        >
+                    </div>
 
-                <div class="flex">
-                    <a
-                        href="/register"
-                        class="font-black uppercase tracking-widest text-sm text-white hover:text-primary transition-colors whitespace-nowrap"
-                        >Register</a
-                    >
+                    <div class="flex md:ml-6">
+                        <a
+                            href="/register"
+                            class="font-black uppercase tracking-widest text-sm text-white hover:text-primary transition-colors whitespace-nowrap"
+                            >Register</a
+                        >
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Bottom Logo Section -->
         <div
-            class="flex flex-col md:flex-row justify-between items-end gap-12 pb-12"
+            class="flex flex-col-reverse md:flex-row justify-between items-start md:items-end gap-12 pb-12"
         >
-            <!-- Left: Warranty & OpenSpace -->
+            <!-- Left on Desktop / Bottom on Mobile: Warranty & OpenSpace -->
             <div class="w-full md:w-auto">
                 <Image
                     src={warrantyLogos}
@@ -148,7 +150,7 @@ import { company } from "../data/company";
                 />
             </div>
 
-            <!-- Right: Affiliate Partner & Awards -->
+            <!-- Right on Desktop / Top on Mobile: Affiliate Partner & Awards -->
             <div class="w-full md:w-auto flex items-center gap-6 h-[96px]">
                 <div class="flex flex-col items-center h-full">
                     <p class="text-white text-sm font-medium">
@@ -157,11 +159,17 @@ import { company } from "../data/company";
 
                     <div class="flex-1"></div>
 
-                    <Image
-                        src={kwLogo}
-                        alt="Kentwood Homes"
-                        class="h-14 w-auto"
-                    />
+                    <a
+                        href="https://kentwoodhomes.ca"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <Image
+                            src={kwLogo}
+                            alt="Kentwood Homes"
+                            class="h-14 w-auto hover:opacity-80 transition-opacity"
+                        />
+                    </a>
                 </div>
                 <Image
                     src={georgieAward}

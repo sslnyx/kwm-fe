@@ -16,8 +16,8 @@ export const company = {
     // Address
     address: {
         line1: "1030 - 8477 Bridgeport Road",
-        line2: "Richmond, BC V6X 0S8 Canada",
-        full: "1030 - 8477 Bridgeport Road, Richmond, BC V6X 0S8 Canada",
+        line2: "Richmond, BC Canada V6X 0S8",
+        full: "1030 - 8477 Bridgeport Road, Richmond, BC Canada V6X 0S8",
         mapLink: "https://www.google.com/maps/search/?api=1&query=1030+-+8477+Bridgeport+Road,+Richmond,+BC+V6X+0S8+Canada",
     },
 
