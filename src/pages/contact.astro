@@ -55,8 +55,18 @@ import contactImg from "../assets/git-1.png";
                                 >
                                     <p>{company.address.line1}</p>
                                     <p>{company.address.line2}</p>
-                                    <p class="pt-4">{company.email}</p>
-                                    <p>{company.phone}</p>
+                                    <p class="pt-4">
+                                        <a
+                                            href={`mailto:${company.email}`}
+                                            class="hover:text-primary transition-colors"
+                                            >{company.email}</a>
+                                    </p>
+                                    <p>
+                                        <a
+                                            href={`tel:${company.phone.replace(/\./g, "")}`}
+                                            class="hover:text-primary transition-colors"
+                                            >{company.phone}</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -234,8 +244,18 @@ import contactImg from "../assets/git-1.png";
                     <div class="text-secondary/70 space-y-1 font-medium">
                         <p>{company.address.line1}</p>
                         <p>{company.address.line2}</p>
-                        <p class="pt-2">{company.email}</p>
-                        <p>{company.phone}</p>
+                        <p class="pt-2">
+                            <a
+                                href={`mailto:${company.email}`}
+                                class="hover:text-primary transition-colors"
+                                >{company.email}</a>
+                        </p>
+                        <p>
+                            <a
+                                href={`tel:${company.phone.replace(/\./g, "")}`}
+                                class="hover:text-primary transition-colors"
+                                >{company.phone}</a>
+                        </p>
                     </div>
                 </div>
             </div>
