@@ -4,7 +4,9 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Register - Kentwood Homes">
     <main class="pt-20">
-        <section class="py-16 bg-white min-h-screen">
+        <section
+            class="py-16 bg-white min-h-[calc(100vh-80px)] flex items-center"
+        >
             <div class="container max-w-2xl">
                 <!-- Header -->
                 <div class="mb-10" data-aos="fade-up">
@@ -27,8 +29,8 @@ import Layout from "../layouts/Layout.astro";
                                 type="text"
                                 id="firstName"
                                 name="firstName"
-                                placeholder="First Name"
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                placeholder="First Name *"
+                                class="w-full border border-gray-300 rounded-lg px-6 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 required
                             />
                         </div>
@@ -37,8 +39,8 @@ import Layout from "../layouts/Layout.astro";
                                 type="text"
                                 id="lastName"
                                 name="lastName"
-                                placeholder="Last Name"
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                placeholder="Last Name *"
+                                class="w-full border border-gray-300 rounded-lg px-6 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 required
                             />
                         </div>
@@ -51,8 +53,8 @@ import Layout from "../layouts/Layout.astro";
                                 type="email"
                                 id="email"
                                 name="email"
-                                placeholder="Email"
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                placeholder="Email *"
+                                class="w-full border border-gray-300 rounded-lg px-6 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                 required
                             />
                         </div>
@@ -61,8 +63,8 @@ import Layout from "../layouts/Layout.astro";
                                 type="tel"
                                 id="phone"
                                 name="phone"
-                                placeholder="Phone"
-                                class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                placeholder="Phone *"
+                                class="w-full border border-gray-300 rounded-lg px-6 py-4 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                             />
                         </div>
                     </div>
@@ -243,11 +245,11 @@ import Layout from "../layouts/Layout.astro";
                         />
                         <label
                             for="consent"
-                            class="text-sm text-secondary/70 leading-relaxed"
+                            class="text-secondary leading-relaxed"
                         >
                             I agree to allow Kentwood Homes and its affiliates
                             to contact me via phone and email. I understand I
-                            can unsubscribe at any time.*
+                            can unsubscribe at any time *
                         </label>
                     </div>
 
@@ -255,7 +257,7 @@ import Layout from "../layouts/Layout.astro";
                     <div class="text-center pt-4">
                         <button
                             type="submit"
-                            class="bg-gradient-to-b from-primary to-primary/80 text-white font-bold uppercase px-16 py-4 rounded-full hover:shadow-lg hover:scale-[1.02] transition-all shadow-md text-lg tracking-wide"
+                            class="bg-primary text-white font-bold uppercase px-16 py-4 rounded-full hover:shadow-lg hover:scale-[1.02] transition-all shadow-md text-lg tracking-wide"
                         >
                             Submit
                         </button>
@@ -365,7 +367,6 @@ import Layout from "../layouts/Layout.astro";
                     if (container) {
                         container.innerHTML = `
                             <div class="text-center py-16">
-                                <div class="text-6xl mb-6 text-primary">✓</div>
                                 <h2 class="text-3xl font-bold text-primary mb-4">Thank You!</h2>
                                 <p class="text-secondary/70 text-lg max-w-md mx-auto">${result.message}</p>
                                 <a href="/" class="inline-block mt-8 bg-primary text-white font-bold px-8 py-3 rounded-full hover:bg-primary/90 transition-all">

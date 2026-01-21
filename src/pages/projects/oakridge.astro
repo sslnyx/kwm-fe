@@ -23,43 +23,47 @@ const project = getProjectBySlug("oakridge");
         </section>
 
         <!-- Project Info Section -->
-        <section class="py-12 bg-white border-b border-gray-100">
+        <section class="pt-12 pb-[100px] bg-white border-b border-gray-100">
             <div class="container">
-                <!-- Title Row with Register Button -->
                 <div
-                    class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4"
+                    class="flex flex-col md:flex-row md:items-start md:justify-between gap-6"
                 >
-                    <div
-                        class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4"
-                    >
-                        <h1
-                            class="text-3xl md:text-4xl font-bold text-secondary"
+                    <div class="space-y-4">
+                        <div
+                            class="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4"
                         >
-                            {project?.name}
-                        </h1>
-                        <span class="text-secondary/60 text-lg">
-                            | {project?.location}
-                        </span>
+                            <h1
+                                class="text-3xl md:text-4xl font-bold text-secondary"
+                            >
+                                {project?.name}
+                            </h1>
+                            <span class="text-secondary/60 text-lg">
+                                | {project?.location}
+                            </span>
+                        </div>
+
+                        <!-- Coming Soon Badge -->
+                        <div class="space-y-1">
+                            <p class="text-secondary/60">
+                                Six 3-bedroom multiplexes
+                            </p>
+                            <p
+                                class="text-primary font-bold uppercase tracking-wide"
+                            >
+                                COMING SOON
+                            </p>
+                            <p class="text-secondary/60">
+                                Register for latest updates
+                            </p>
+                        </div>
                     </div>
+
                     <a
                         href="/register"
-                        class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-primary/90 transition-colors inline-block text-center shadow-md w-fit"
+                        class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-primary/90 transition-colors inline-block text-center shadow-md w-fit order-last md:order-none"
                     >
                         Register Now
                     </a>
-                </div>
-
-                <!-- Subtitle -->
-                <!-- <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-4">
-                    {project?.units}
-                </h2> -->
-
-                <!-- Coming Soon Badge -->
-                <div class="space-y-1">
-                    <p class="text-primary font-bold uppercase tracking-wide">
-                        COMING SOON
-                    </p>
-                    <p class="text-secondary/60">Register for latest updates</p>
                 </div>
             </div>
         </section>
