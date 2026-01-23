@@ -38,18 +38,27 @@ const project = getProjectBySlug("mcgill");
                             | {project?.location}
                         </span>
                     </div>
-                    <a
-                        href="/register"
-                        class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-primary/90 transition-colors inline-block text-center shadow-md w-fit"
-                    >
-                        Register Now
-                    </a>
+
+                    <div class="flex flex-col md:flex-row gap-4 items-center">
+                        <a
+                            href="/register"
+                            class="bg-primary text-white px-8 py-3 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-primary/90 transition-colors inline-block text-center shadow-md w-fit order-last md:order-none"
+                        >
+                            Register Now
+                        </a>
+                    </div>
                 </div>
 
-                <!-- Subtitle -->
-                <h2 class="text-2xl md:text-3xl font-bold text-secondary mb-8">
-                    {project?.units}
-                </h2>
+                <!-- Project Status -->
+                <div class="space-y-1 mb-8">
+                    <p class="text-secondary/60 text-lg">
+                        {project?.units}
+                    </p>
+                    <p class="text-primary font-bold uppercase tracking-wide">
+                        COMING SOON
+                    </p>
+                    <p class="text-secondary/60">Register for latest updates</p>
+                </div>
 
                 <!-- Content Grid -->
                 <div class="grid lg:grid-cols-2 gap-12 items-start">
