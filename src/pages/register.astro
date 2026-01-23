@@ -301,7 +301,8 @@ import Layout from "../layouts/Layout.astro";
 
 <script>
     const API_BASE_URL =
-        import.meta.env.PUBLIC_API_URL || "https://kmw-app.irix.design/api";
+        import.meta.env.PUBLIC_API_URL ||
+        "https://app.kentwoodmultiplex.ca/api";
 
     const form = document.querySelector("form") as HTMLFormElement | null;
     if (form) {

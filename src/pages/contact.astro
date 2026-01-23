@@ -59,13 +59,15 @@ import contactImg from "../assets/git-1.png";
                                         <a
                                             href={`mailto:${company.email}`}
                                             class="hover:text-primary transition-colors"
-                                            >{company.email}</a>
+                                            >{company.email}</a
+                                        >
                                     </p>
                                     <p>
                                         <a
                                             href={`tel:${company.phone.replace(/\./g, "")}`}
                                             class="hover:text-primary transition-colors"
-                                            >{company.phone}</a>
+                                            >{company.phone}</a
+                                        >
                                     </p>
                                 </div>
                             </div>
@@ -248,13 +250,15 @@ import contactImg from "../assets/git-1.png";
                             <a
                                 href={`mailto:${company.email}`}
                                 class="hover:text-primary transition-colors"
-                                >{company.email}</a>
+                                >{company.email}</a
+                            >
                         </p>
                         <p>
                             <a
                                 href={`tel:${company.phone.replace(/\./g, "")}`}
                                 class="hover:text-primary transition-colors"
-                                >{company.phone}</a>
+                                >{company.phone}</a
+                            >
                         </p>
                     </div>
                 </div>
@@ -273,7 +277,8 @@ import contactImg from "../assets/git-1.png";
 
 <script>
     const API_BASE_URL =
-        import.meta.env.PUBLIC_API_URL || "https://kmw-app.irix.design/api";
+        import.meta.env.PUBLIC_API_URL ||
+        "https://app.kentwoodmultiplex.ca/api";
 
     document.querySelectorAll("form").forEach((form) => {
         form.addEventListener("submit", async (e) => {
