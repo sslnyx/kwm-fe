@@ -23,6 +23,8 @@ jobs:
 
     - name: 🏗️ Build project
       run: npm run build
+      env:
+        PUBLIC_API_URL: https://app.kentwoodmultiplex.ca/api
 
     - name: 📂 Sync files to cPanel
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
