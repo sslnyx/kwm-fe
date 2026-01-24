@@ -8,7 +8,7 @@ import mcgillRender from "../../assets/mcgill-render.png";
 const project = getProjectBySlug("mcgill");
 ---
 
-<Layout title={`${project?.name} - Kentwood Homes`}>
+<Layout title={project?.name || ""}>
     <main class="pt-20">
         <!-- Full-Width Hero Image -->
         <section class="relative">

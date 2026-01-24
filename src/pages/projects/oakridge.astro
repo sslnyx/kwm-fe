@@ -5,7 +5,7 @@ import { getProjectBySlug } from "../../data/projects";
 const project = getProjectBySlug("oakridge");
 ---
 
-<Layout title={`${project?.name} - Kentwood Homes`}>
+<Layout title={project?.name || ""}>
     <main class="pt-20">
         <!-- Full-Width Map Hero -->
         <section class="relative">
